@@ -88,8 +88,7 @@ const Features = () => {
               key={index} 
               variant="glass" 
               animate
-              className={`reveal`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              className={`reveal transition-delay-${index * 100}`}
             >
               <CardHeader>
                 <div className="h-12 w-12 rounded-xl bg-blu-50 flex items-center justify-center mb-4">

@@ -12,6 +12,13 @@ const Index = () => {
   useScrollAnimation();
   
   useEffect(() => {
+    // Add CSS classes for transition delays
+    const style = document.createElement('style');
+    for (let i = 1; i <= 20; i++) {
+      style.innerHTML += `.transition-delay-${i * 100} { transition-delay: ${i * 100}ms; }`;
+    }
+    document.head.appendChild(style);
+    
     // Smooth scroll to anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
@@ -28,6 +35,10 @@ const Index = () => {
         }
       });
     });
+    
+    return () => {
+      document.head.removeChild(style);
+    };
   }, []);
   
   return (

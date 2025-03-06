@@ -142,7 +142,7 @@ const Integration = () => {
                     <br/>
                     <div className="text-muted-foreground"># Get API endpoint</div>
                     <div className="text-foreground">api_endpoint = deployment.api_endpoint</div>
-                    <div className="text-foreground">print(f"Agent deployed at: {api_endpoint}")</div>
+                    <div className="text-foreground">print(f"Agent deployed at: {'{deployment.api_endpoint}'}")</div>
                   </code>
                 </pre>
               </div>
