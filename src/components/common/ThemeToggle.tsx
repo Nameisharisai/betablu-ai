@@ -1,43 +1,20 @@
 
-import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
+import { useEffect } from "react";
+import { Moon } from "lucide-react";
 
 const ThemeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
   useEffect(() => {
-    // Check for user preference in localStorage or system preference
-    const savedTheme = localStorage.getItem("theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    
-    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
-      setIsDarkMode(true);
-      document.documentElement.classList.add("dark");
-    }
+    // Always set to dark theme
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
   }, []);
-
-  const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
-    setIsDarkMode(!isDarkMode);
-  };
 
   return (
     <button
-      onClick={toggleTheme}
       className="p-2 rounded-full hover:bg-secondary/80 transition-colors"
-      aria-label="Toggle theme"
+      aria-label="Dark mode enabled"
     >
-      {isDarkMode ? (
-        <Sun className="h-5 w-5 text-foreground" />
-      ) : (
-        <Moon className="h-5 w-5 text-foreground" />
-      )}
+      <Moon className="h-5 w-5 text-foreground" />
     </button>
   );
 };

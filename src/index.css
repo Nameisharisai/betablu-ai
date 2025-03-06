@@ -5,38 +5,6 @@
 
 @layer base {
   :root {
-    --background: 210 50% 98%;
-    --foreground: 222 47% 11%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
-
-    --primary: 210 100% 47%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222 47% 11%;
-
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-
-    --accent: 210 40% 96%;
-    --accent-foreground: 222 47% 11%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 222 47% 11%;
-
-    --radius: 0.75rem;
-  }
-
-  .dark {
     --background: 222 47% 5%;
     --foreground: 210 40% 98%;
 
@@ -84,11 +52,11 @@
 
 @layer components {
   .glass {
-    @apply backdrop-blur-lg bg-white/70 dark:bg-dark-800/70 border border-white/20 dark:border-white/10 shadow-glass;
+    @apply backdrop-blur-lg bg-dark-800/70 border border-white/10 shadow-glass;
   }
   
   .glass-card {
-    @apply backdrop-blur-lg bg-white/80 dark:bg-dark-800/80 border border-white/30 dark:border-white/10 shadow-glass hover:shadow-blu transition-all duration-500;
+    @apply backdrop-blur-lg bg-dark-800/80 border border-white/10 shadow-glass hover:shadow-blu transition-all duration-500;
   }
   
   .text-balance {
@@ -129,6 +97,56 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-blu-600 to-blu-400 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blu-500 to-blu-400 bg-clip-text text-transparent;
+  }
+  
+  .animated-gradient {
+    background: linear-gradient(-45deg, #0c98e9, #0279c7, #36b1f8, #055185);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0% {
+      box-shadow: 0 0 0 0 rgba(12, 152, 233, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(12, 152, 233, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(12, 152, 233, 0);
+    }
   }
 }
