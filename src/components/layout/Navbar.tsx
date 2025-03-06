@@ -1,7 +1,9 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import Button from "../common/Button";
+import ThemeToggle from "../common/ThemeToggle";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,36 +28,57 @@ const Navbar = () => {
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="#" className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center space-x-2">
               <span className="text-2xl font-bold text-gradient">BetaBLU</span>
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a
-              href="#features"
+          <nav className="hidden md:flex items-center space-x-6">
+            <Link
+              to="/intelliagent"
               className="text-foreground/90 hover:text-blu-600 font-medium transition-colors"
             >
-              Features
-            </a>
-            <a
-              href="#integration"
+              IntelliAgent Space
+            </Link>
+            <Link
+              to="/how-it-works"
               className="text-foreground/90 hover:text-blu-600 font-medium transition-colors"
             >
-              Integration
-            </a>
-            <a
-              href="#platform"
+              How It Works
+            </Link>
+            <Link
+              to="/adaptive-intelligence"
               className="text-foreground/90 hover:text-blu-600 font-medium transition-colors"
             >
-              Platform
-            </a>
-            <Button>Get Started</Button>
+              Adaptive Intelligence
+            </Link>
+            <Link
+              to="/documentation"
+              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors"
+            >
+              Documentation
+            </Link>
+            <Link
+              to="/careers"
+              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors"
+            >
+              Careers
+            </Link>
+            <ThemeToggle />
+            <div className="flex space-x-2">
+              <Link to="/login">
+                <Button variant="outline" size="sm">Login</Button>
+              </Link>
+              <Link to="/signup">
+                <Button size="sm">Sign Up</Button>
+              </Link>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
             <button
               type="button"
               className="text-foreground p-2 rounded-md"
@@ -75,29 +98,48 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div className="md:hidden glass animate-fade-in">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a
-              href="#features"
+            <Link
+              to="/intelliagent"
               className="block px-3 py-4 text-foreground hover:text-blu-600 font-medium border-b border-border"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Features
-            </a>
-            <a
-              href="#integration"
+              IntelliAgent Space
+            </Link>
+            <Link
+              to="/how-it-works"
               className="block px-3 py-4 text-foreground hover:text-blu-600 font-medium border-b border-border"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Integration
-            </a>
-            <a
-              href="#platform"
-              className="block px-3 py-4 text-foreground hover:text-blu-600 font-medium"
+              How It Works
+            </Link>
+            <Link
+              to="/adaptive-intelligence"
+              className="block px-3 py-4 text-foreground hover:text-blu-600 font-medium border-b border-border"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Platform
-            </a>
-            <div className="px-3 py-4">
-              <Button full>Get Started</Button>
+              Adaptive Intelligence
+            </Link>
+            <Link
+              to="/documentation"
+              className="block px-3 py-4 text-foreground hover:text-blu-600 font-medium border-b border-border"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Documentation
+            </Link>
+            <Link
+              to="/careers"
+              className="block px-3 py-4 text-foreground hover:text-blu-600 font-medium border-b border-border"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Careers
+            </Link>
+            <div className="flex flex-col space-y-2 px-3 py-4">
+              <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
+                <Button variant="outline" full>Login</Button>
+              </Link>
+              <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>
+                <Button full>Sign Up</Button>
+              </Link>
             </div>
           </div>
         </div>

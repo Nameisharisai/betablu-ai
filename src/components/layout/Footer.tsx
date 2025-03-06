@@ -1,10 +1,11 @@
 
 import { cn } from "@/lib/utils";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Github, Linkedin, Twitter, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = ({ className }: { className?: string }) => {
   return (
-    <footer className={cn("bg-secondary/50 py-12", className)}>
+    <footer className={cn("bg-secondary/50 dark:bg-dark-800/50 py-12", className)}>
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="col-span-1 md:col-span-2">
@@ -14,6 +15,15 @@ const Footer = ({ className }: { className?: string }) => {
             <p className="text-muted-foreground max-w-sm mb-6">
               Create, manage, and integrate AI agents into your workflows with BetaBLU's platform.
             </p>
+            <div className="flex items-center space-x-4 mb-6">
+              <a
+                href="mailto:betablu.ai@gmail.com"
+                className="flex items-center text-muted-foreground hover:text-blu-500 transition-colors"
+              >
+                <Mail size={18} className="mr-2" />
+                betablu.ai@gmail.com
+              </a>
+            </div>
             <div className="flex space-x-4">
               <a
                 href="#"
@@ -40,24 +50,24 @@ const Footer = ({ className }: { className?: string }) => {
             <h4 className="text-sm font-semibold mb-4 uppercase tracking-wider">Platform</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-muted-foreground hover:text-blu-500 transition-colors">
-                  Agent Builder
-                </a>
+                <Link to="/intelliagent" className="text-muted-foreground hover:text-blu-500 transition-colors">
+                  IntelliAgent Space
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-blu-500 transition-colors">
-                  Integration
-                </a>
+                <Link to="/how-it-works" className="text-muted-foreground hover:text-blu-500 transition-colors">
+                  How It Works
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-blu-500 transition-colors">
-                  Enterprise
-                </a>
+                <Link to="/adaptive-intelligence" className="text-muted-foreground hover:text-blu-500 transition-colors">
+                  Adaptive Intelligence
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-blu-500 transition-colors">
-                  Pricing
-                </a>
+                <Link to="/documentation" className="text-muted-foreground hover:text-blu-500 transition-colors">
+                  Documentation
+                </Link>
               </li>
             </ul>
           </div>
@@ -76,13 +86,13 @@ const Footer = ({ className }: { className?: string }) => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-blu-500 transition-colors">
-                  Contact
-                </a>
+                <Link to="/careers" className="text-muted-foreground hover:text-blu-500 transition-colors">
+                  Careers
+                </Link>
               </li>
               <li>
                 <a href="#" className="text-muted-foreground hover:text-blu-500 transition-colors">
-                  Careers
+                  Contact
                 </a>
               </li>
             </ul>
