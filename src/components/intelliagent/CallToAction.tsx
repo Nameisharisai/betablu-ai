@@ -4,7 +4,7 @@ import Button from "@/components/common/Button";
 
 const CallToAction = () => {
   return (
-    <div className="py-20">
+    <div className="py-20 bg-background">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="h2 mb-4">Ready to build your custom AI agent?</h2>

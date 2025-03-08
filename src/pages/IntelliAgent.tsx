@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { useScrollAnimation } from "@/lib/useScrollAnimation";
+import { initScrollAnimation } from "@/lib/useScrollAnimation";
 import HeroSection from "@/components/intelliagent/HeroSection";
 import FeaturesGrid from "@/components/intelliagent/FeaturesGrid";
 import AgentTypes from "@/components/intelliagent/AgentTypes";
@@ -14,11 +14,16 @@ const IntelliAgent = () => {
     window.scrollTo(0, 0);
     
     // Initialize scroll animations
-    useScrollAnimation();
+    const cleanup = initScrollAnimation();
+    
+    return () => {
+      // Clean up scroll animations when component unmounts
+      if (cleanup) cleanup();
+    };
   }, []);
   
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Navbar />
       
       <main>
