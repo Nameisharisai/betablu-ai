@@ -233,7 +233,7 @@ const AiChatSpace = () => {
                 </div>
                 <Button 
                   type="submit" 
-                  size="icon"
+                  size="sm"
                   disabled={!input.trim() || isTyping}
                 >
                   <Send className="h-5 w-5" />

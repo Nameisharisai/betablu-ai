@@ -17,6 +17,9 @@ import AgentBuilder from "./pages/AgentBuilder";
 import AiChatSpace from "./pages/AiChatSpace";
 import CodeStudio from "./pages/CodeStudio";
 import ResearchSpace from "./pages/ResearchSpace";
+import ContentAgent from "./pages/ContentAgent";
+import Subscription from "./pages/Subscription";
+import Profile from "./pages/Profile";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +42,9 @@ const App = () => (
           <Route path="/ai-chat" element={<AiChatSpace />} />
           <Route path="/code-studio" element={<CodeStudio />} />
           <Route path="/research-space" element={<ResearchSpace />} />
+          <Route path="/content-agent" element={<ContentAgent />} />
+          <Route path="/subscription" element={<Subscription />} />
+          <Route path="/profile" element={<Profile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

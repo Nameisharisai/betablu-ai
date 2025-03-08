@@ -1,11 +1,12 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "@/components/common/Button";
 import { Eye, EyeOff, ArrowLeft, Check } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -41,10 +42,16 @@ const Signup = () => {
     // Simulate signup
     setTimeout(() => {
       setIsLoading(false);
+      
+      // Store login state in localStorage (for demo purposes)
+      localStorage.setItem("isLoggedIn", "true");
+      
       toast({
         title: "Account created!",
-        description: "Welcome to BetaBLU! You can now login to your account.",
+        description: "Welcome to BetaBLU! You can now access all features.",
       });
+      
+      navigate("/subscription");
     }, 1500);
   };
 
@@ -62,7 +69,7 @@ const Signup = () => {
       </div>
       
       <div className="w-full max-w-md">
-        <div className="bg-white dark:bg-dark-800 rounded-2xl shadow-lg border border-border p-8">
+        <div className="bg-dark-800 rounded-2xl shadow-lg border border-border p-8">
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
               <h1 className="text-3xl font-bold text-gradient">BetaBLU</h1>
@@ -85,7 +92,7 @@ const Signup = () => {
                   placeholder="John Doe"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                  className="w-full px-4 py-2 rounded-lg border border-border bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
                 />
               </div>
 
@@ -101,7 +108,7 @@ const Signup = () => {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                  className="w-full px-4 py-2 rounded-lg border border-border bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
                 />
               </div>
 
@@ -118,7 +125,7 @@ const Signup = () => {
                     placeholder="••••••••"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                    className="w-full px-4 py-2 rounded-lg border border-border bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
                   />
                   <button
                     type="button"
@@ -145,8 +152,8 @@ const Signup = () => {
                     onChange={handleInputChange}
                     className={`w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blu-500 ${
                       formData.confirmPassword && !validatePassword()
-                        ? "border-red-500 bg-red-50 dark:bg-red-900/10"
-                        : "border-border bg-background dark:bg-dark-700"
+                        ? "border-red-500 bg-red-900/10"
+                        : "border-border bg-dark-700"
                     }`}
                   />
                   {formData.confirmPassword && (

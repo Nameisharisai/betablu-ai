@@ -1,11 +1,12 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "@/components/common/Button";
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { toast } from "@/components/ui/use-toast";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,10 +26,16 @@ const Login = () => {
     // Simulate login
     setTimeout(() => {
       setIsLoading(false);
+      
+      // Store login state in localStorage (for demo purposes)
+      localStorage.setItem("isLoggedIn", "true");
+      
       toast({
         title: "Login Successful",
         description: "Welcome back to BetaBLU!",
       });
+      
+      navigate("/");
     }, 1500);
   };
 
@@ -46,7 +53,7 @@ const Login = () => {
       </div>
       
       <div className="w-full max-w-md">
-        <div className="bg-white dark:bg-dark-800 rounded-2xl shadow-lg border border-border p-8">
+        <div className="bg-dark-800 rounded-2xl shadow-lg border border-border p-8">
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
               <h1 className="text-3xl font-bold text-gradient">BetaBLU</h1>
@@ -69,7 +76,7 @@ const Login = () => {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                  className="w-full px-4 py-2 rounded-lg border border-border bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
                 />
               </div>
 
@@ -86,7 +93,7 @@ const Login = () => {
                     placeholder="••••••••"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                    className="w-full px-4 py-2 rounded-lg border border-border bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
                   />
                   <button
                     type="button"
