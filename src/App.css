@@ -36,7 +36,7 @@
 
 .card {
   padding: 2em;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(13, 18, 30, 0.7);
   border: 1px solid rgba(54, 177, 248, 0.1);
   box-shadow: 0 4px 20px rgba(5, 81, 133, 0.15);
 }
@@ -45,7 +45,7 @@
   color: #36b1f8;
 }
 
-/* Light theme background */
+/* Cosmic background */
 .cosmic-bg {
   position: fixed;
   top: 0;
@@ -55,12 +55,12 @@
   pointer-events: none;
   z-index: -1;
   overflow: hidden;
-  background: radial-gradient(ellipse at bottom, #f8f9ff 0%, #e6f0ff 100%);
+  background: radial-gradient(ellipse at bottom, #0d121e 0%, #020307 100%);
 }
 
 .star {
   position: absolute;
-  background-color: #36b1f8;
+  background-color: white;
   border-radius: 50%;
   opacity: 0.6;
   box-shadow: 0 0 10px 1px rgba(54, 177, 248, 0.4);
@@ -69,7 +69,7 @@
 .nebula {
   position: absolute;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(54, 177, 248, 0.1) 0%, rgba(5, 81, 133, 0) 70%);
+  background: radial-gradient(circle, rgba(54, 177, 248, 0.2) 0%, rgba(5, 81, 133, 0) 70%);
   filter: blur(8px);
   opacity: 0.5;
 }
