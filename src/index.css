@@ -5,32 +5,32 @@
 
 @layer base {
   :root {
-    --background: 220 20% 6%;
-    --foreground: 210 40% 98%;
+    --background: 210 40% 98%;
+    --foreground: 220 20% 6%;
 
-    --card: 220 20% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 6%;
 
-    --popover: 220 20% 6%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 210 40% 98%;
+    --popover-foreground: 220 20% 6%;
 
     --primary: 210 100% 47%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 12%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 220 16% 92%;
+    --secondary-foreground: 220 20% 6%;
 
-    --muted: 220 20% 12%;
-    --muted-foreground: 215 16% 75%;
+    --muted: 220 16% 92%;
+    --muted-foreground: 215 16% 35%;
 
     --accent: 217 76% 56%;
-    --accent-foreground: 210 40% 98%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
+    --border: 220 13% 85%;
+    --input: 220 13% 85%;
     --ring: 215 20.2% 65.1%;
   }
 
@@ -52,11 +52,11 @@
 
 @layer components {
   .glass {
-    @apply backdrop-blur-lg bg-card/70 border border-white/5 shadow-md;
+    @apply backdrop-blur-lg bg-white/70 border border-white/30 shadow-md;
   }
   
   .glass-card {
-    @apply backdrop-blur-lg bg-card/80 border border-white/5 shadow-md hover:shadow-lg transition-all duration-500;
+    @apply backdrop-blur-lg bg-white/80 border border-white/40 shadow-md hover:shadow-lg transition-all duration-500;
   }
   
   .text-balance {
@@ -95,7 +95,7 @@
   }
 
   .cosmic-card {
-    @apply relative overflow-hidden bg-gradient-to-br from-background to-card border border-accent/10 shadow-lg hover:shadow-accent/10 rounded-xl transition-all duration-500;
+    @apply relative overflow-hidden bg-gradient-to-br from-white to-secondary border border-primary/10 shadow-lg hover:shadow-primary/10 rounded-xl transition-all duration-500;
   }
 
   .cosmic-card::after {
@@ -110,7 +110,7 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-blu-400 to-blu-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blu-500 to-blu-700 bg-clip-text text-transparent;
   }
   
   .animated-gradient {
@@ -164,7 +164,7 @@
   }
 
   .cosmic-star {
-    @apply absolute rounded-full bg-white;
+    @apply absolute rounded-full bg-blu-400;
     animation: twinkle linear infinite;
   }
 
@@ -198,7 +198,7 @@
   }
 
   .space-dust {
-    @apply absolute w-[1px] h-[1px] bg-white;
+    @apply absolute w-[1px] h-[1px] bg-blu-400;
     opacity: 0.6;
     box-shadow: 0 0 10px 1px rgba(54, 177, 248, 0.4);
     animation: dust linear infinite;
