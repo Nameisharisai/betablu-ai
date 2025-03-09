@@ -23,6 +23,17 @@ const Login = () => {
     e.preventDefault();
     setIsLoading(true);
 
+    // Validate form
+    if (!formData.email || !formData.password) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all fields",
+        variant: "destructive",
+      });
+      setIsLoading(false);
+      return;
+    }
+
     // Simulate login
     setTimeout(() => {
       setIsLoading(false);
@@ -53,7 +64,7 @@ const Login = () => {
       </div>
       
       <div className="w-full max-w-md">
-        <div className="bg-dark-800 rounded-2xl shadow-lg border border-border p-8">
+        <div className="bg-white rounded-2xl shadow-lg border border-border p-8">
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
               <h1 className="text-3xl font-bold text-gradient">BetaBLU</h1>
@@ -76,7 +87,7 @@ const Login = () => {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                  className="w-full px-4 py-2 rounded-lg border border-border bg-white focus:outline-none focus:ring-2 focus:ring-blu-500"
                 />
               </div>
 
@@ -93,7 +104,7 @@ const Login = () => {
                     placeholder="••••••••"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 rounded-lg border border-border bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                    className="w-full px-4 py-2 rounded-lg border border-border bg-white focus:outline-none focus:ring-2 focus:ring-blu-500"
                   />
                   <button
                     type="button"

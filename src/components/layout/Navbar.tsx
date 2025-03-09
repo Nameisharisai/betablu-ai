@@ -3,9 +3,11 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, User, LogOut } from "lucide-react";
 import Button from "../common/Button";
+import { useToast } from "@/hooks/use-toast";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,6 +35,12 @@ const Navbar = () => {
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
     setUserMenuOpen(false);
+    
+    toast({
+      title: "Logged Out",
+      description: "You have been successfully logged out of BetaBLU",
+    });
+    
     navigate("/");
   };
 
@@ -96,7 +104,7 @@ const Navbar = () => {
               <div className="relative">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center space-x-1 p-1 rounded-full hover:bg-dark-700 transition-colors"
+                  className="flex items-center space-x-1 p-1 rounded-full hover:bg-secondary transition-colors"
                 >
                   <div className="w-8 h-8 bg-blu-600 rounded-full flex items-center justify-center text-white font-medium">
                     U
@@ -107,7 +115,7 @@ const Navbar = () => {
                   <div className="absolute right-0 mt-2 w-48 glass rounded-lg shadow-lg py-1 z-50">
                     <Link
                       to="/profile"
-                      className="block px-4 py-2 hover:bg-dark-700 transition-colors"
+                      className="block px-4 py-2 hover:bg-secondary transition-colors"
                       onClick={() => setUserMenuOpen(false)}
                     >
                       <div className="flex items-center">
@@ -117,7 +125,7 @@ const Navbar = () => {
                     </Link>
                     <Link
                       to="/subscription"
-                      className="block px-4 py-2 hover:bg-dark-700 transition-colors"
+                      className="block px-4 py-2 hover:bg-secondary transition-colors"
                       onClick={() => setUserMenuOpen(false)}
                     >
                       <div className="flex items-center">
@@ -131,7 +139,7 @@ const Navbar = () => {
                     </Link>
                     <button
                       onClick={handleLogout}
-                      className="block w-full text-left px-4 py-2 hover:bg-dark-700 transition-colors text-red-400 hover:text-red-300"
+                      className="block w-full text-left px-4 py-2 hover:bg-secondary transition-colors text-red-600 hover:text-red-500"
                     >
                       <div className="flex items-center">
                         <LogOut className="h-4 w-4 mr-2" />
@@ -215,7 +223,7 @@ const Navbar = () => {
                     handleLogout();
                     setMobileMenuOpen(false);
                   }}
-                  className="block w-full text-left px-3 py-4 text-red-400 hover:text-red-300 font-medium border-b border-border"
+                  className="block w-full text-left px-3 py-4 text-red-600 hover:text-red-500 font-medium border-b border-border"
                 >
                   Logout
                 </button>

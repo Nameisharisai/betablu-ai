@@ -30,23 +30,19 @@ const Profile = () => {
     joined: "June 2023",
   });
 
-  // Simulate checking authentication status
+  // Check authentication on component mount
   useEffect(() => {
-    const checkAuth = () => {
-      const isAuthenticated = localStorage.getItem("isLoggedIn") === "true";
-      
-      if (!isAuthenticated) {
-        navigate("/login");
-        toast({
-          title: "Authentication Required",
-          description: "Please log in to view your profile",
-        });
-      }
-      
-      setIsLoggedIn(isAuthenticated);
-    };
+    const loginStatus = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(loginStatus);
     
-    checkAuth();
+    if (!loginStatus) {
+      toast({
+        title: "Authentication Required",
+        description: "Please log in to view your profile",
+        variant: "destructive",
+      });
+      navigate("/login");
+    }
   }, [navigate, toast]);
 
   // Handle logout
@@ -54,7 +50,7 @@ const Profile = () => {
     localStorage.removeItem("isLoggedIn");
     toast({
       title: "Logged Out",
-      description: "You have been successfully logged out",
+      description: "You have been successfully logged out of BetaBLU",
     });
     navigate("/");
   };
@@ -74,7 +70,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
       <Navbar />
       
       <main className="flex-grow pt-24 pb-10">
@@ -98,7 +94,7 @@ const Profile = () => {
                 <h3 className="font-semibold text-lg">{userData.name}</h3>
                 <p className="text-muted-foreground text-sm">{userData.email}</p>
                 <div className="mt-2">
-                  <span className="inline-block bg-blu-600/20 text-blu-400 text-xs px-2 py-1 rounded-full">
+                  <span className="inline-block bg-blu-100 text-blu-700 text-xs px-2 py-1 rounded-full">
                     {userData.subscription} Plan
                   </span>
                 </div>
@@ -111,7 +107,7 @@ const Profile = () => {
                   className={`w-full flex items-center p-3 rounded-lg transition-colors ${
                     activeTab === "profile"
                       ? "bg-blu-600 text-white"
-                      : "hover:bg-dark-700"
+                      : "hover:bg-secondary"
                   }`}
                 >
                   <User className="h-5 w-5 mr-3" />
@@ -122,7 +118,7 @@ const Profile = () => {
                   className={`w-full flex items-center p-3 rounded-lg transition-colors ${
                     activeTab === "subscription"
                       ? "bg-blu-600 text-white"
-                      : "hover:bg-dark-700"
+                      : "hover:bg-secondary"
                   }`}
                 >
                   <CreditCard className="h-5 w-5 mr-3" />
@@ -133,7 +129,7 @@ const Profile = () => {
                   className={`w-full flex items-center p-3 rounded-lg transition-colors ${
                     activeTab === "security"
                       ? "bg-blu-600 text-white"
-                      : "hover:bg-dark-700"
+                      : "hover:bg-secondary"
                   }`}
                 >
                   <Shield className="h-5 w-5 mr-3" />
@@ -144,7 +140,7 @@ const Profile = () => {
                   className={`w-full flex items-center p-3 rounded-lg transition-colors ${
                     activeTab === "notifications"
                       ? "bg-blu-600 text-white"
-                      : "hover:bg-dark-700"
+                      : "hover:bg-secondary"
                   }`}
                 >
                   <Bell className="h-5 w-5 mr-3" />
@@ -155,7 +151,7 @@ const Profile = () => {
                   className={`w-full flex items-center p-3 rounded-lg transition-colors ${
                     activeTab === "settings"
                       ? "bg-blu-600 text-white"
-                      : "hover:bg-dark-700"
+                      : "hover:bg-secondary"
                   }`}
                 >
                   <Settings className="h-5 w-5 mr-3" />
@@ -192,7 +188,7 @@ const Profile = () => {
                         <label className="block text-sm font-medium text-muted-foreground mb-1">
                           Full Name
                         </label>
-                        <div className="p-3 bg-dark-700 rounded-lg">
+                        <div className="p-3 bg-white rounded-lg border border-border">
                           {userData.name}
                         </div>
                       </div>
@@ -200,7 +196,7 @@ const Profile = () => {
                         <label className="block text-sm font-medium text-muted-foreground mb-1">
                           Email
                         </label>
-                        <div className="p-3 bg-dark-700 rounded-lg">
+                        <div className="p-3 bg-white rounded-lg border border-border">
                           {userData.email}
                         </div>
                       </div>
@@ -208,7 +204,7 @@ const Profile = () => {
                         <label className="block text-sm font-medium text-muted-foreground mb-1">
                           Role
                         </label>
-                        <div className="p-3 bg-dark-700 rounded-lg">
+                        <div className="p-3 bg-white rounded-lg border border-border">
                           {userData.role}
                         </div>
                       </div>
@@ -216,7 +212,7 @@ const Profile = () => {
                         <label className="block text-sm font-medium text-muted-foreground mb-1">
                           Member Since
                         </label>
-                        <div className="p-3 bg-dark-700 rounded-lg">
+                        <div className="p-3 bg-white rounded-lg border border-border">
                           {userData.joined}
                         </div>
                       </div>
@@ -225,9 +221,9 @@ const Profile = () => {
                     <div className="pt-6 border-t border-border space-y-4">
                       <h3 className="text-lg font-medium">Connected Services</h3>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="p-4 bg-dark-700 rounded-lg flex items-center">
-                          <div className="bg-slate-800 p-2 rounded-full mr-3">
-                            <svg className="h-5 w-5 text-blue-400" viewBox="0 0 24 24" fill="currentColor">
+                        <div className="p-4 bg-white rounded-lg flex items-center border border-border">
+                          <div className="bg-blue-50 p-2 rounded-full mr-3">
+                            <svg className="h-5 w-5 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h21.35c.731 0 1.325-.593 1.325-1.325V1.325C24 .593 23.407 0 22.675 0zm-3.219 7.5H18.25v8.711h-3.125V7.5zm-1.563-3.023c1.016 0 1.838.821 1.838 1.837s-.822 1.838-1.838 1.838-1.837-.822-1.837-1.838.821-1.837 1.837-1.837zM5.25 7.5h3.125v8.711H5.25V7.5z" />
                             </svg>
                           </div>
@@ -236,8 +232,8 @@ const Profile = () => {
                             <div className="text-xs text-muted-foreground">Connected</div>
                           </div>
                         </div>
-                        <div className="p-4 bg-dark-700 rounded-lg flex items-center">
-                          <div className="bg-slate-800 p-2 rounded-full mr-3">
+                        <div className="p-4 bg-white rounded-lg flex items-center border border-border">
+                          <div className="bg-blue-50 p-2 rounded-full mr-3">
                             <svg className="h-5 w-5 text-blue-600" viewBox="0 0 24 24" fill="currentColor">
                               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                             </svg>
@@ -260,13 +256,13 @@ const Profile = () => {
                 <div>
                   <h2 className="text-2xl font-semibold mb-6">Subscription</h2>
                   
-                  <div className="mb-8 p-4 bg-gradient-to-r from-blu-800 to-blu-600 rounded-lg">
+                  <div className="mb-8 p-4 bg-gradient-to-r from-blu-100 to-blu-200 rounded-lg border border-blu-300">
                     <div className="flex justify-between items-center">
                       <div>
-                        <h3 className="text-xl font-semibold mb-1">Professional Plan</h3>
-                        <p className="text-blu-100">$49/month</p>
+                        <h3 className="text-xl font-semibold mb-1 text-blu-800">Professional Plan</h3>
+                        <p className="text-blu-700">$49/month</p>
                       </div>
-                      <div className="text-xs bg-blu-100 text-blu-800 font-medium px-2 py-1 rounded-full">
+                      <div className="text-xs bg-blu-600 text-white font-medium px-2 py-1 rounded-full">
                         Active
                       </div>
                     </div>
@@ -276,15 +272,15 @@ const Profile = () => {
                     <div>
                       <h3 className="text-lg font-medium mb-3">Plan Details</h3>
                       <div className="grid md:grid-cols-2 gap-4">
-                        <div className="p-3 bg-dark-700 rounded-lg">
+                        <div className="p-3 bg-white rounded-lg border border-border">
                           <div className="text-sm text-muted-foreground">Billing Cycle</div>
                           <div>Monthly</div>
                         </div>
-                        <div className="p-3 bg-dark-700 rounded-lg">
+                        <div className="p-3 bg-white rounded-lg border border-border">
                           <div className="text-sm text-muted-foreground">Next Billing Date</div>
                           <div>July 15, 2023</div>
                         </div>
-                        <div className="p-3 bg-dark-700 rounded-lg">
+                        <div className="p-3 bg-white rounded-lg border border-border">
                           <div className="text-sm text-muted-foreground">Payment Method</div>
                           <div>•••• •••• •••• 4242</div>
                         </div>
@@ -296,7 +292,7 @@ const Profile = () => {
                       <div className="flex flex-wrap gap-3">
                         <Button variant="outline">Change Plan</Button>
                         <Button variant="outline">Update Payment</Button>
-                        <Button variant="outline" className="text-red-500 hover:text-red-600">
+                        <Button variant="outline" className="text-red-600 hover:text-red-700">
                           Cancel Subscription
                         </Button>
                       </div>
@@ -319,7 +315,7 @@ const Profile = () => {
                           </label>
                           <input
                             type="password"
-                            className="w-full p-3 rounded-lg bg-dark-700 border border-border focus:ring-blu-500 focus:border-blu-500"
+                            className="w-full p-3 rounded-lg bg-white border border-border focus:ring-blu-500 focus:border-blu-500"
                           />
                         </div>
                         <div>
@@ -328,7 +324,7 @@ const Profile = () => {
                           </label>
                           <input
                             type="password"
-                            className="w-full p-3 rounded-lg bg-dark-700 border border-border focus:ring-blu-500 focus:border-blu-500"
+                            className="w-full p-3 rounded-lg bg-white border border-border focus:ring-blu-500 focus:border-blu-500"
                           />
                         </div>
                         <div>
@@ -337,7 +333,7 @@ const Profile = () => {
                           </label>
                           <input
                             type="password"
-                            className="w-full p-3 rounded-lg bg-dark-700 border border-border focus:ring-blu-500 focus:border-blu-500"
+                            className="w-full p-3 rounded-lg bg-white border border-border focus:ring-blu-500 focus:border-blu-500"
                           />
                         </div>
                         <Button type="button">Update Password</Button>
@@ -347,7 +343,7 @@ const Profile = () => {
                     <div className="pt-6 border-t border-border">
                       <h3 className="text-lg font-medium mb-3">Two-Factor Authentication</h3>
                       <p className="mb-3 text-muted-foreground">
-                        Add an extra layer of security to your account by enabling two-factor authentication.
+                        Add an extra layer of security to your BetaBLU account by enabling two-factor authentication.
                       </p>
                       <Button variant="outline" icon={<Key className="h-4 w-4" />}>
                         Enable 2FA
@@ -366,12 +362,12 @@ const Profile = () => {
                       <div key={type} className="pt-4 first:pt-0 border-t first:border-0 border-border">
                         <h3 className="text-lg font-medium mb-3">{type} Notifications</h3>
                         <div className="space-y-3">
-                          {["Product updates", "Security alerts", "Newsletter", "Marketing"].map((item) => (
+                          {["BetaBLU updates", "Security alerts", "Newsletter", "Marketing"].map((item) => (
                             <div key={item} className="flex items-center justify-between">
                               <span>{item}</span>
                               <label className="inline-flex items-center cursor-pointer">
                                 <input type="checkbox" className="sr-only peer" defaultChecked={item === "Security alerts"} />
-                                <div className="relative w-11 h-6 bg-dark-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blu-600"></div>
+                                <div className="relative w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blu-600"></div>
                               </label>
                             </div>
                           ))}
@@ -393,7 +389,7 @@ const Profile = () => {
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-lg font-medium mb-3">Language Preference</h3>
-                      <select className="w-full p-3 rounded-lg bg-dark-700 border border-border focus:ring-blu-500 focus:border-blu-500">
+                      <select className="w-full p-3 rounded-lg bg-white border border-border focus:ring-blu-500 focus:border-blu-500">
                         <option>English (US)</option>
                         <option>Spanish</option>
                         <option>French</option>
@@ -410,7 +406,7 @@ const Profile = () => {
                         <Button variant="outline" size="sm" full className="justify-start">
                           Manage cookies
                         </Button>
-                        <Button variant="outline" size="sm" full className="justify-start text-red-500 hover:text-red-600">
+                        <Button variant="outline" size="sm" full className="justify-start text-red-600 hover:text-red-700">
                           Delete account
                         </Button>
                       </div>

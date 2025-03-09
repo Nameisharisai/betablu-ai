@@ -28,6 +28,16 @@ const Signup = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Validate form
+    if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all fields",
+        variant: "destructive"
+      });
+      return;
+    }
+    
     if (!validatePassword()) {
       toast({
         title: "Passwords don't match",
@@ -69,13 +79,13 @@ const Signup = () => {
       </div>
       
       <div className="w-full max-w-md">
-        <div className="bg-dark-800 rounded-2xl shadow-lg border border-border p-8">
+        <div className="bg-white rounded-2xl shadow-lg border border-border p-8">
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
               <h1 className="text-3xl font-bold text-gradient">BetaBLU</h1>
             </Link>
             <h2 className="text-2xl font-semibold mt-6 mb-2">Create Account</h2>
-            <p className="text-muted-foreground">Sign up to get started</p>
+            <p className="text-muted-foreground">Sign up to get started with BetaBLU</p>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -92,7 +102,7 @@ const Signup = () => {
                   placeholder="John Doe"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                  className="w-full px-4 py-2 rounded-lg border border-border bg-white focus:outline-none focus:ring-2 focus:ring-blu-500"
                 />
               </div>
 
@@ -108,7 +118,7 @@ const Signup = () => {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                  className="w-full px-4 py-2 rounded-lg border border-border bg-white focus:outline-none focus:ring-2 focus:ring-blu-500"
                 />
               </div>
 
@@ -125,7 +135,7 @@ const Signup = () => {
                     placeholder="••••••••"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 rounded-lg border border-border bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                    className="w-full px-4 py-2 rounded-lg border border-border bg-white focus:outline-none focus:ring-2 focus:ring-blu-500"
                   />
                   <button
                     type="button"
@@ -152,8 +162,8 @@ const Signup = () => {
                     onChange={handleInputChange}
                     className={`w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blu-500 ${
                       formData.confirmPassword && !validatePassword()
-                        ? "border-red-500 bg-red-900/10"
-                        : "border-border bg-dark-700"
+                        ? "border-red-500 bg-red-50"
+                        : "border-border bg-white"
                     }`}
                   />
                   {formData.confirmPassword && (

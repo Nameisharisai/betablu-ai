@@ -1,6 +1,6 @@
 
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/common/Button";
@@ -22,25 +22,32 @@ type Plan = {
 };
 
 const Subscription = () => {
+  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
 
-  // Check login status (would use useEffect with auth in real implementation)
-  // This is a placeholder for demo purposes
-  const checkLoginStatus = () => {
-    // In reality, this would check with your auth system
-    const fakeLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-    setIsLoggedIn(fakeLoggedIn);
-    return fakeLoggedIn;
-  };
+  // Check login status on component mount
+  useEffect(() => {
+    const loginStatus = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(loginStatus);
+    
+    if (!loginStatus) {
+      toast({
+        title: "Authentication Required",
+        description: "Please log in to view subscription options",
+        variant: "destructive",
+      });
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const plans: Plan[] = [
     {
       id: "starter",
       name: "Starter",
       price: billingCycle === "monthly" ? "$19" : "$190",
-      description: "Perfect for individuals just getting started with AI agents",
+      description: "Perfect for individuals just getting started with BetaBLU AI agents",
       features: [
         { name: "Build 3 custom agents", included: true },
         { name: "5,000 AI chat tokens per month", included: true },
@@ -56,7 +63,7 @@ const Subscription = () => {
       id: "pro",
       name: "Professional",
       price: billingCycle === "monthly" ? "$49" : "$490",
-      description: "Designed for professionals who need more powerful agents",
+      description: "Designed for professionals who need more powerful BetaBLU agents",
       features: [
         { name: "Build 10 custom agents", included: true },
         { name: "25,000 AI chat tokens per month", included: true },
@@ -73,7 +80,7 @@ const Subscription = () => {
       id: "enterprise",
       name: "Enterprise",
       price: billingCycle === "monthly" ? "$149" : "$1,490",
-      description: "For businesses requiring full AI agent capabilities",
+      description: "For businesses requiring full BetaBLU AI agent capabilities",
       features: [
         { name: "Unlimited custom agents", included: true },
         { name: "100,000 AI chat tokens per month", included: true },
@@ -88,21 +95,12 @@ const Subscription = () => {
   ];
 
   const handleSelectPlan = (planId: string) => {
-    if (!isLoggedIn && !checkLoginStatus()) {
-      toast({
-        title: "Authentication Required",
-        description: "Please log in or sign up to subscribe to a plan",
-        variant: "destructive",
-      });
-      return;
-    }
-    
     setSelectedPlan(planId);
     
     // Simulate subscription process
     toast({
       title: "Plan Selected",
-      description: `You've selected the ${plans.find(p => p.id === planId)?.name} plan. In a real implementation, this would take you to checkout.`,
+      description: `You've selected the ${plans.find(p => p.id === planId)?.name} plan. Thank you for subscribing to BetaBLU!`,
     });
   };
 
@@ -110,21 +108,25 @@ const Subscription = () => {
     setBillingCycle(prev => prev === "monthly" ? "yearly" : "monthly");
   };
 
+  if (!isLoggedIn) {
+    return null; // Will redirect via useEffect
+  }
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
       <Navbar />
       
       <main className="flex-grow pt-24 pb-10">
         <div className="container-section">
           <div className="mb-12 text-center">
-            <h1 className="h2 mb-4">Choose Your Plan</h1>
+            <h1 className="h2 mb-4">BetaBLU Subscription Plans</h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Unlock the full potential of BetaBLU with our flexible subscription plans. 
               Select the package that best fits your needs.
             </p>
             
             <div className="flex justify-center mt-8">
-              <div className="bg-dark-700 p-1 rounded-full inline-flex">
+              <div className="bg-secondary p-1 rounded-full inline-flex">
                 <button
                   className={`py-2 px-6 rounded-full text-sm font-medium transition-all ${
                     billingCycle === "monthly" ? "bg-blu-600 text-white" : "text-muted-foreground"
@@ -139,7 +141,7 @@ const Subscription = () => {
                   }`}
                   onClick={() => setBillingCycle("yearly")}
                 >
-                  Yearly <span className="text-xs text-green-400">(Save 20%)</span>
+                  Yearly <span className="text-xs text-green-600">(-20%)</span>
                 </button>
               </div>
             </div>
@@ -150,7 +152,7 @@ const Subscription = () => {
               <div 
                 key={plan.id}
                 className={`relative glass-card p-6 rounded-xl transition-all duration-300 ${
-                  plan.highlighted ? "border-blu-500 transform hover:-translate-y-2" : "hover:-translate-y-1"
+                  plan.highlighted ? "border-blu-500 shadow-lg transform hover:-translate-y-2" : "hover:-translate-y-1"
                 }`}
               >
                 {plan.highlighted && (
@@ -192,22 +194,6 @@ const Subscription = () => {
               </div>
             ))}
           </div>
-          
-          {!isLoggedIn && (
-            <div className="mt-12 text-center">
-              <p className="text-muted-foreground mb-4">
-                Already have an account? Login to manage your subscription.
-              </p>
-              <div className="flex justify-center gap-4">
-                <Link to="/login">
-                  <Button variant="outline">Login</Button>
-                </Link>
-                <Link to="/signup">
-                  <Button>Sign Up</Button>
-                </Link>
-              </div>
-            </div>
-          )}
         </div>
       </main>
       
