@@ -37,11 +37,16 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    // Apply light theme to body
+    // Apply light theme to body and html
     document.body.classList.add('light-theme');
+    document.documentElement.classList.add('light-theme');
+    
+    // Remove max-width constraint if it exists
+    document.getElementById('root')?.classList.add('w-full', 'max-w-none');
     
     return () => {
       document.body.classList.remove('light-theme');
+      document.documentElement.classList.remove('light-theme');
     };
   }, []);
 
@@ -51,43 +56,45 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <div className="cosmic-bg"></div>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/intelliagent" element={<IntelliAgent />} />
-            <Route path="/how-it-works" element={<HowItWorks />} />
-            <Route path="/adaptive-intelligence" element={<AdaptiveIntelligence />} />
-            <Route path="/documentation" element={<Documentation />} />
-            <Route path="/careers" element={<Careers />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            
-            {/* Protected routes */}
-            <Route path="/agent-builder" element={
-              <ProtectedRoute><AgentBuilder /></ProtectedRoute>
-            } />
-            <Route path="/ai-chat" element={
-              <ProtectedRoute><AiChatSpace /></ProtectedRoute>
-            } />
-            <Route path="/code-studio" element={
-              <ProtectedRoute><CodeStudio /></ProtectedRoute>
-            } />
-            <Route path="/research-space" element={
-              <ProtectedRoute><ResearchSpace /></ProtectedRoute>
-            } />
-            <Route path="/content-agent" element={
-              <ProtectedRoute><ContentAgent /></ProtectedRoute>
-            } />
-            <Route path="/subscription" element={
-              <ProtectedRoute><Subscription /></ProtectedRoute>
-            } />
-            <Route path="/profile" element={
-              <ProtectedRoute><Profile /></ProtectedRoute>
-            } />
-            
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <div className="cosmic-bg w-full"></div>
+          <div className="w-full max-w-none">
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/intelliagent" element={<IntelliAgent />} />
+              <Route path="/how-it-works" element={<HowItWorks />} />
+              <Route path="/adaptive-intelligence" element={<AdaptiveIntelligence />} />
+              <Route path="/documentation" element={<Documentation />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              
+              {/* Protected routes */}
+              <Route path="/agent-builder" element={
+                <ProtectedRoute><AgentBuilder /></ProtectedRoute>
+              } />
+              <Route path="/ai-chat" element={
+                <ProtectedRoute><AiChatSpace /></ProtectedRoute>
+              } />
+              <Route path="/code-studio" element={
+                <ProtectedRoute><CodeStudio /></ProtectedRoute>
+              } />
+              <Route path="/research-space" element={
+                <ProtectedRoute><ResearchSpace /></ProtectedRoute>
+              } />
+              <Route path="/content-agent" element={
+                <ProtectedRoute><ContentAgent /></ProtectedRoute>
+              } />
+              <Route path="/subscription" element={
+                <ProtectedRoute><Subscription /></ProtectedRoute>
+              } />
+              <Route path="/profile" element={
+                <ProtectedRoute><Profile /></ProtectedRoute>
+              } />
+              
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
