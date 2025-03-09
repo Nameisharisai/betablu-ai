@@ -36,15 +36,19 @@ const Index = () => {
       });
     });
     
+    // Add light theme class to body
+    document.body.classList.add('light-theme');
+    
     return () => {
       document.head.removeChild(style);
+      document.body.classList.remove('light-theme');
     };
   }, []);
   
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-background text-foreground light-theme">
       <Navbar />
-      <main>
+      <main className="landing-content">
         <Hero />
         <Features />
         <Integration />
