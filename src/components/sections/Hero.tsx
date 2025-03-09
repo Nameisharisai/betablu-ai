@@ -8,7 +8,6 @@ const Hero = () => {
   const titleRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLParagraphElement>(null);
   const buttonsRef = useRef<HTMLDivElement>(null);
-  const cosmicBgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Add fade-in animation on initial load
@@ -31,59 +30,39 @@ const Hero = () => {
     animateItem(textRef.current, 600);
     animateItem(buttonsRef.current, 900);
     
-    // Create cosmic background
-    if (cosmicBgRef.current) {
-      const cosmicBg = cosmicBgRef.current;
-      
-      // Create stars
-      for (let i = 0; i < 100; i++) {
-        const star = document.createElement("div");
-        star.className = "star";
-        
-        const size = Math.random() * 2;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.top = `${Math.random() * 100}%`;
-        
-        cosmicBg.appendChild(star);
-      }
-      
-      // Create nebulas
-      for (let i = 0; i < 5; i++) {
-        const nebula = document.createElement("div");
-        nebula.className = "nebula";
-        
-        const size = Math.random() * 300 + 100;
-        nebula.style.width = `${size}px`;
-        nebula.style.height = `${size}px`;
-        
-        nebula.style.left = `${Math.random() * 100}%`;
-        nebula.style.top = `${Math.random() * 100}%`;
-        
-        cosmicBg.appendChild(nebula);
-      }
-    }
-    
     // Initialize particles animation
     const createParticle = () => {
       const particles = document.querySelector('.particles');
       if (!particles) return;
       
       const particle = document.createElement('div');
-      particle.className = 'space-dust';
+      particle.className = 'absolute w-1 h-1 bg-blu-400/30 rounded-full';
       
       // Random position
       const x = Math.random() * 100;
       const y = Math.random() * 100;
       
+      // Random size
+      const size = Math.random() * 3 + 1;
+      
       // Set styles
       particle.style.left = `${x}%`;
       particle.style.top = `${y}%`;
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.opacity = (Math.random() * 0.5 + 0.2).toString();
       
-      // Animation duration
-      particle.style.animationDuration = `${Math.random() * 5 + 3}s`;
+      // Animation
+      particle.animate(
+        [
+          { transform: 'translateY(0) rotate(0deg)', opacity: particle.style.opacity },
+          { transform: `translateY(-${Math.random() * 100 + 50}px) rotate(${Math.random() * 360}deg)`, opacity: '0' }
+        ],
+        {
+          duration: Math.random() * 3000 + 3000,
+          easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+        }
+      );
       
       particles.appendChild(particle);
       
@@ -92,7 +71,7 @@ const Hero = () => {
         if (particle.parentNode === particles) {
           particles.removeChild(particle);
         }
-      }, 8000);
+      }, 6000);
     };
     
     // Create particles at interval
@@ -100,24 +79,18 @@ const Hero = () => {
     
     return () => {
       clearInterval(particleInterval);
-      if (cosmicBgRef.current) {
-        cosmicBgRef.current.innerHTML = '';
-      }
     };
   }, []);
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Cosmic Background */}
-      <div ref={cosmicBgRef} className="cosmic-bg"></div>
-      
       {/* Particles Container */}
       <div className="particles absolute inset-0 overflow-hidden z-0"></div>
       
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] rounded-full bg-accent/5 blur-3xl" />
-        <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] rounded-full bg-blu-900/20 blur-3xl" />
+        <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] rounded-full bg-blu-800/10 blur-3xl" />
       </div>
       
       {/* Content */}
@@ -125,7 +98,7 @@ const Hero = () => {
         ref={heroRef}
         className="container-section flex flex-col items-center text-center space-y-12 opacity-0 translate-y-10 transition-all duration-1000"
       >
-        <div className="inline-flex items-center px-3 py-1.5 border border-accent rounded-full bg-card/50 pulse-glow">
+        <div className="inline-flex items-center px-3 py-1.5 border border-blu-800 rounded-full bg-blu-900/50 pulse-glow">
           <span className="text-xs font-medium text-blu-400 uppercase tracking-wide">
             Introducing BetaBLU Platform
           </span>

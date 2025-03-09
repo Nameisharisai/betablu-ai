@@ -5,32 +5,32 @@
 
 @layer base {
   :root {
-    --background: 220 20% 6%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 100%;
+    --foreground: 222 47% 15%;
 
-    --card: 220 20% 8%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 15%;
 
-    --popover: 220 20% 6%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 15%;
 
     --primary: 210 100% 47%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 12%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 222 47% 15%;
 
-    --muted: 220 20% 12%;
-    --muted-foreground: 215 16% 75%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 215 16% 55%;
 
-    --accent: 217 76% 56%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 222 47% 15%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 18%;
-    --input: 220 20% 18%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
     --ring: 215 20.2% 65.1%;
   }
 
@@ -52,11 +52,11 @@
 
 @layer components {
   .glass {
-    @apply backdrop-blur-lg bg-card/70 border border-white/5 shadow-md;
+    @apply backdrop-blur-lg bg-white/80 border border-black/5 shadow-md;
   }
   
   .glass-card {
-    @apply backdrop-blur-lg bg-card/80 border border-white/5 shadow-md hover:shadow-lg transition-all duration-500;
+    @apply backdrop-blur-lg bg-white/90 border border-black/5 shadow-md hover:shadow-lg transition-all duration-500;
   }
   
   .text-balance {
@@ -93,28 +93,15 @@
     opacity: 1;
     transform: translateY(0);
   }
-
-  .cosmic-card {
-    @apply relative overflow-hidden bg-gradient-to-br from-background to-card border border-accent/10 shadow-lg hover:shadow-accent/10 rounded-xl transition-all duration-500;
-  }
-
-  .cosmic-card::after {
-    content: '';
-    @apply absolute -inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 transition-opacity duration-500 pointer-events-none;
-  }
-
-  .cosmic-card:hover::after {
-    @apply opacity-100;
-  }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-blu-400 to-blu-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blu-700 to-blu-500 bg-clip-text text-transparent;
   }
   
   .animated-gradient {
-    background: linear-gradient(-45deg, #055185, #0279c7, #36b1f8, #0c98e9);
+    background: linear-gradient(-45deg, #0c98e9, #0279c7, #36b1f8, #055185);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
   }
@@ -153,68 +140,13 @@
   
   @keyframes pulse-glow {
     0% {
-      box-shadow: 0 0 0 0 rgba(54, 177, 248, 0.4);
+      box-shadow: 0 0 0 0 rgba(12, 152, 233, 0.4);
     }
     70% {
-      box-shadow: 0 0 0 10px rgba(54, 177, 248, 0);
+      box-shadow: 0 0 0 10px rgba(12, 152, 233, 0);
     }
     100% {
-      box-shadow: 0 0 0 0 rgba(54, 177, 248, 0);
-    }
-  }
-
-  .cosmic-star {
-    @apply absolute rounded-full bg-white;
-    animation: twinkle linear infinite;
-  }
-
-  @keyframes twinkle {
-    0%, 100% {
-      opacity: 0.1;
-      transform: scale(0.7);
-    }
-    50% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  .cosmic-particle {
-    @apply absolute rounded-full;
-    background: radial-gradient(circle, rgba(54, 177, 248, 0.8) 0%, rgba(5, 81, 133, 0) 70%);
-    animation: float linear infinite;
-  }
-
-  @keyframes float {
-    0% {
-      transform: translateY(0) translateX(0);
-    }
-    50% {
-      transform: translateY(-20px) translateX(10px);
-    }
-    100% {
-      transform: translateY(0) translateX(0);
-    }
-  }
-
-  .space-dust {
-    @apply absolute w-[1px] h-[1px] bg-white;
-    opacity: 0.6;
-    box-shadow: 0 0 10px 1px rgba(54, 177, 248, 0.4);
-    animation: dust linear infinite;
-  }
-
-  @keyframes dust {
-    0% {
-      transform: translateY(0) rotate(0deg);
-      opacity: 0;
-    }
-    20% {
-      opacity: 0.6;
-    }
-    100% {
-      transform: translateY(-100px) rotate(360deg);
-      opacity: 0;
+      box-shadow: 0 0 0 0 rgba(12, 152, 233, 0);
     }
   }
 }
