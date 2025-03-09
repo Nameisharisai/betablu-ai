@@ -107,7 +107,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 w-full">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Cosmic Background */}
       <div ref={cosmicBgRef} className="cosmic-bg"></div>
       
@@ -123,7 +123,7 @@ const Hero = () => {
       {/* Content */}
       <div 
         ref={heroRef}
-        className="container mx-auto px-4 flex flex-col items-center text-center space-y-12 opacity-0 translate-y-10 transition-all duration-1000 max-w-7xl"
+        className="container-section flex flex-col items-center text-center space-y-12 opacity-0 translate-y-10 transition-all duration-1000"
       >
         <div className="inline-flex items-center px-3 py-1.5 border border-accent rounded-full bg-card/50 pulse-glow">
           <span className="text-xs font-medium text-blu-400 uppercase tracking-wide">
@@ -133,7 +133,7 @@ const Hero = () => {
 
         <h1 
           ref={titleRef}
-          className="h1 max-w-4xl mx-auto text-center text-balance opacity-0 translate-y-10 transition-all duration-1000"
+          className="h1 max-w-4xl text-balance opacity-0 translate-y-10 transition-all duration-1000"
         >
           Create, deploy, and integrate
           <span className="text-gradient"> AI agents </span>
@@ -142,14 +142,14 @@ const Hero = () => {
 
         <p 
           ref={textRef}
-          className="text-xl text-muted-foreground max-w-2xl mx-auto text-center text-balance opacity-0 translate-y-10 transition-all duration-1000"
+          className="text-xl text-muted-foreground max-w-2xl text-balance opacity-0 translate-y-10 transition-all duration-1000"
         >
           BetaBLU helps enterprises and developers create powerful AI agents that seamlessly integrate with existing systems and workflows.
         </p>
 
         <div 
           ref={buttonsRef}
-          className="flex flex-col sm:flex-row gap-4 mt-8 opacity-0 translate-y-10 transition-all duration-1000 justify-center"
+          className="flex flex-col sm:flex-row gap-4 mt-8 opacity-0 translate-y-10 transition-all duration-1000"
         >
           <Button size="lg" icon={<ArrowRight size={18} />} iconPosition="right" className="animated-gradient">
             Get Started

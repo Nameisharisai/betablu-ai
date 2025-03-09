@@ -46,9 +46,9 @@ const Index = () => {
   }, []);
   
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground light-theme w-full">
+    <div className="min-h-screen flex flex-col bg-background text-foreground light-theme">
       <Navbar />
-      <main className="flex-1 w-full">
+      <main className="landing-content">
         <Hero />
         <Features />
         <Integration />

@@ -1,7 +1,8 @@
 
 #root {
-  width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
+  padding: 2rem;
   text-align: center;
 }
 
@@ -81,8 +82,7 @@
 .landing-content {
   text-align: center;
   margin: 0 auto;
-  width: 100%;
-  max-width: 100%;
+  max-width: 800px;
 }
 
 .landing-hero {
@@ -90,14 +90,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
 }
 
 /* Light theme specific styles */
 .light-theme {
   background-color: #ffffff;
   color: #333333;
-  width: 100%;
 }
 
 .light-theme-card {
@@ -119,53 +117,4 @@
 .page-container {
   padding: 2rem;
   min-height: 100vh;
-  width: 100%;
-}
-
-/* Ensure container covers full width */
-.container-full {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-/* Ensure text is properly centered in all viewports */
-.text-center-responsive {
-  text-align: center !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-/* Fix for container width issues */
-.container {
-  width: 100%;
-}
-
-/* Container that maintains width but allows full bleed backgrounds */
-.container-with-bleed {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-/* Content within full bleed container */
-.content-within-bleed {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-/* Override any conflicting Tailwind styles */
-.mx-auto-important {
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
-
-.w-full-important {
-  width: 100% !important;
-}
-
-.max-w-none {
-  max-width: none !important;
 }
