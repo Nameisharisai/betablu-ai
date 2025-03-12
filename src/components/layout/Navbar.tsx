@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Menu, X, User, LogOut } from "lucide-react";
@@ -19,7 +18,6 @@ const Navbar = () => {
       setIsScrolled(scrollPosition > 10);
     };
 
-    // Check login status
     const checkLoginStatus = () => {
       const loginStatus = localStorage.getItem("isLoggedIn") === "true";
       setIsLoggedIn(loginStatus);
@@ -54,11 +52,15 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <span className="text-2xl logo-text text-gradient pop-animation">Betablu</span>
+              <img 
+                src="/lovable-uploads/eb6ebe1a-41bd-49a6-9d7f-5331a7fb4984.png" 
+                alt="Betablu Logo" 
+                className="h-8 w-auto transform hover:scale-110 transition-transform duration-300"
+              />
+              <span className="text-2xl font-bold text-gradient font-sans">Betablu</span>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             <Link
               to="/intelliagent"
@@ -107,13 +109,13 @@ const Navbar = () => {
                 </Link>
               </div>
             ) : (
-              <div className="relative pop-animation">
+              <div className="relative">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center space-x-1 p-1 rounded-full hover:bg-secondary transition-colors"
+                  className="flex items-center space-x-1 p-2 rounded-full hover:bg-secondary transition-colors"
                 >
-                  <div className="w-8 h-8 bg-blu-600 rounded-full flex items-center justify-center text-white font-medium">
-                    U
+                  <div className="w-8 h-8 bg-cosmos-800 rounded-full flex items-center justify-center text-white">
+                    <User className="h-4 w-4" />
                   </div>
                 </button>
                 
@@ -158,7 +160,6 @@ const Navbar = () => {
             )}
           </nav>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               type="button"
@@ -175,7 +176,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden glass animate-fade-in">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">

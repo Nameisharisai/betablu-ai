@@ -1,4 +1,3 @@
-
 import { cn } from "@/lib/utils";
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -10,7 +9,12 @@ const Footer = ({ className }: { className?: string }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-4">
-              <span className="text-2xl font-bold text-gradient">Betablu</span>
+              <img 
+                src="/lovable-uploads/eb6ebe1a-41bd-49a6-9d7f-5331a7fb4984.png" 
+                alt="Betablu Logo" 
+                className="h-8 w-auto mr-2"
+              />
+              <span className="text-2xl font-bold text-gradient font-sans">Betablu</span>
             </div>
             <p className="text-muted-foreground max-w-sm mb-6 font-serif">
               Create, manage, and integrate AI agents into your workflows with Betablu's platform.
