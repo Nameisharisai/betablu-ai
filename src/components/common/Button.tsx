@@ -27,12 +27,12 @@ const Button = ({
   type = "button",
   full = false,
 }: ButtonProps) => {
-  const baseStyles = "inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blu-500";
+  const baseStyles = "inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cosmos-500";
   
   const variantStyles = {
-    primary: "bg-gradient-to-r from-blu-500 to-blu-400 text-white hover:shadow-blu",
+    primary: "bg-cosmos-900 text-white hover:bg-cosmos-800 hover:shadow-cosmos",
     secondary: "bg-secondary text-foreground hover:bg-secondary/80",
-    outline: "border border-blu-300 text-blu-600 hover:bg-blu-50",
+    outline: "border border-cosmos-200 text-cosmos-800 hover:bg-cosmos-50",
     ghost: "bg-transparent text-foreground hover:bg-secondary",
   };
   

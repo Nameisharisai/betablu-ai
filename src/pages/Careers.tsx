@@ -34,16 +34,32 @@ const Careers = () => {
     }
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulating form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    // Prepare form data
+    const applicationData = new FormData();
+    applicationData.append('name', formData.name);
+    applicationData.append('email', formData.email);
+    applicationData.append('position', formData.position);
+    if (formData.resume) {
+      applicationData.append('resume', formData.resume);
+    }
+    applicationData.append('coverLetter', formData.coverLetter);
+    
+    try {
+      // This would normally be an actual API call
+      // For demonstration, we'll simulate the submission
+      console.log("Sending application to company@betablu.ai:", 
+        Object.fromEntries(applicationData.entries()));
+      
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
       toast({
         title: "Application Submitted!",
-        description: "We've received your application and will review it shortly.",
+        description: "We've received your application and will contact you soon.",
       });
       
       // Reset form
@@ -55,10 +71,16 @@ const Careers = () => {
         coverLetter: ""
       });
       
-      // In a real implementation, you would send an email to betablu.ai@gmail.com
-      // This would typically be handled by a backend service
-      console.log("Application submitted:", formData);
-    }, 1500);
+    } catch (error) {
+      console.error("Error submitting application:", error);
+      toast({
+        title: "Submission Error",
+        description: "There was a problem submitting your application. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   const openPositions = [
@@ -67,28 +89,28 @@ const Careers = () => {
       location: "Remote",
       type: "Full-time",
       description: "Join our core engineering team to build and scale our AI agent platform with cutting-edge technologies.",
-      icon: <Code className="h-6 w-6 text-blu-500" />
+      icon: <Code className="h-6 w-6 text-cosmos-800" />
     },
     {
       title: "AI Research Scientist",
       location: "San Francisco, CA",
       type: "Full-time",
       description: "Research and develop next-generation AI agent capabilities and learning algorithms.",
-      icon: <Brain className="h-6 w-6 text-blu-500" />
+      icon: <Brain className="h-6 w-6 text-cosmos-800" />
     },
     {
       title: "Product Manager",
       location: "Remote",
       type: "Full-time",
       description: "Lead the product vision for our adaptive intelligence platform and drive feature development.",
-      icon: <Building className="h-6 w-6 text-blu-500" />
+      icon: <Building className="h-6 w-6 text-cosmos-800" />
     },
     {
       title: "Customer Success Specialist",
       location: "New York, NY",
       type: "Full-time",
       description: "Help enterprise customers integrate and optimize BetaBLU agents within their workflows.",
-      icon: <MessageSquare className="h-6 w-6 text-blu-500" />
+      icon: <MessageSquare className="h-6 w-6 text-cosmos-800" />
     }
   ];
   
@@ -99,7 +121,7 @@ const Careers = () => {
         {/* Hero Section */}
         <section className="py-16 md:py-24 relative">
           <div className="absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute -top-20 -right-20 w-[600px] h-[600px] rounded-full bg-blu-50/80 dark:bg-blu-900/20 blur-3xl" />
+            <div className="absolute -top-20 -right-20 w-[600px] h-[600px] rounded-full bg-cosmos-50 dark:bg-cosmos-950/20 blur-3xl" />
           </div>
           
           <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -129,7 +151,7 @@ const Careers = () => {
               ].map((benefit, index) => (
                 <div 
                   key={index} 
-                  className="bg-white dark:bg-dark-800 p-6 rounded-xl shadow-sm border border-border"
+                  className="bg-white dark:bg-cosmos-900 p-6 rounded-xl shadow-sm border border-border"
                 >
                   <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
                   <p className="text-muted-foreground">{benefit.description}</p>
@@ -140,7 +162,7 @@ const Careers = () => {
         </section>
         
         {/* Open Positions */}
-        <section className="py-16 bg-secondary/50 dark:bg-dark-700/30">
+        <section className="py-16 bg-secondary/50">
           <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 reveal">
               <h2 className="h2 mb-4">Open Positions</h2>
@@ -153,12 +175,12 @@ const Careers = () => {
               {openPositions.map((position, index) => (
                 <div 
                   key={index} 
-                  className="bg-white dark:bg-dark-800 rounded-xl shadow-sm border border-border overflow-hidden reveal"
+                  className="bg-white dark:bg-cosmos-900 rounded-xl shadow-sm border border-border overflow-hidden reveal"
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
                   <div className="p-6">
                     <div className="flex items-start">
-                      <div className="h-12 w-12 rounded-xl bg-blu-50 dark:bg-blu-900/30 flex items-center justify-center mr-4">
+                      <div className="h-12 w-12 rounded-xl bg-cosmos-50 dark:bg-cosmos-900/30 flex items-center justify-center mr-4">
                         {position.icon}
                       </div>
                       <div>
@@ -192,7 +214,7 @@ const Careers = () => {
               </p>
             </div>
             
-            <div className="bg-white dark:bg-dark-800 rounded-xl shadow-md border border-border p-6 md:p-8 reveal">
+            <div className="bg-white dark:bg-cosmos-900 rounded-xl shadow-md border border-border p-6 md:p-8 reveal">
               <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
@@ -206,7 +228,7 @@ const Careers = () => {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                      className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-cosmos-800 focus:outline-none focus:ring-2 focus:ring-cosmos-500"
                     />
                   </div>
                   
@@ -221,7 +243,7 @@ const Careers = () => {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                      className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-cosmos-800 focus:outline-none focus:ring-2 focus:ring-cosmos-500"
                     />
                   </div>
                 </div>
@@ -236,7 +258,7 @@ const Careers = () => {
                     required
                     value={formData.position}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                    className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-cosmos-800 focus:outline-none focus:ring-2 focus:ring-cosmos-500"
                   >
                     <option value="Software Engineer">Senior Software Engineer</option>
                     <option value="AI Researcher">AI Research Scientist</option>
@@ -257,7 +279,7 @@ const Careers = () => {
                     accept=".pdf,.doc,.docx"
                     required
                     onChange={handleFileChange}
-                    className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                    className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-cosmos-800 focus:outline-none focus:ring-2 focus:ring-cosmos-500"
                   />
                 </div>
                 
@@ -271,7 +293,7 @@ const Careers = () => {
                     rows={5}
                     value={formData.coverLetter}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-dark-700 focus:outline-none focus:ring-2 focus:ring-blu-500"
+                    className="w-full px-4 py-2 rounded-lg border border-border bg-background dark:bg-cosmos-800 focus:outline-none focus:ring-2 focus:ring-cosmos-500"
                     placeholder="Tell us why you're interested in joining BetaBLU..."
                   ></textarea>
                 </div>

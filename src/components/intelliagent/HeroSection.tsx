@@ -5,7 +5,7 @@ import Button from "@/components/common/Button";
 const HeroSection = () => {
   return (
     <section className="pt-40 pb-20 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-blu-950/20 to-background z-[-1]"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-cosmos-100/20 to-background z-[-1]"></div>
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto reveal">
           <h1 className="h1 mb-6">

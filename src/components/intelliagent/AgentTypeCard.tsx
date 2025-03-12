@@ -13,10 +13,10 @@ type AgentTypeCardProps = {
 
 const AgentTypeCard = ({ icon: Icon, title, description, linkTo }: AgentTypeCardProps) => {
   return (
-    <Card className="glass-card hover:shadow-blu transition-all duration-500">
+    <Card className="glass-card hover:shadow-cosmos transition-all duration-500">
       <CardHeader>
-        <div className="h-12 w-12 rounded-full bg-blu-900/50 flex items-center justify-center mb-4">
-          <Icon className="h-6 w-6 text-blu-400" />
+        <div className="h-12 w-12 rounded-full bg-cosmos-800/50 flex items-center justify-center mb-4">
+          <Icon className="h-6 w-6 text-cosmos-100" />
         </div>
         <h3 className="text-xl font-bold mb-2">{title}</h3>
       </CardHeader>

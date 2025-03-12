@@ -8,32 +8,32 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222 47% 15%;
+    --foreground: 220 14% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 15%;
+    --card-foreground: 220 14% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 15%;
+    --popover-foreground: 220 14% 10%;
 
-    --primary: 210 100% 47%;
+    --primary: 220 14% 10%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 222 47% 15%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 14% 10%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 215 16% 55%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 14% 40%;
 
-    --accent: 0 0% 96%;
-    --accent-foreground: 222 47% 15%;
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 14% 10%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 215 20.2% 65.1%;
+    --border: 220 14% 90%;
+    --input: 220 14% 90%;
+    --ring: 220 14% 40%;
   }
 
   * {
@@ -117,11 +117,11 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-blu-700 to-blu-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-cosmos-700 to-cosmos-500 bg-clip-text text-transparent;
   }
   
   .animated-gradient {
-    background: linear-gradient(-45deg, #0c98e9, #0279c7, #36b1f8, #055185);
+    background: linear-gradient(-45deg, #000000, #333333, #555555, #222222);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
   }
@@ -160,13 +160,13 @@
   
   @keyframes pulse-glow {
     0% {
-      box-shadow: 0 0 0 0 rgba(12, 152, 233, 0.4);
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
     }
     70% {
-      box-shadow: 0 0 0 10px rgba(12, 152, 233, 0);
+      box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
     }
     100% {
-      box-shadow: 0 0 0 0 rgba(12, 152, 233, 0);
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
     }
   }
   
