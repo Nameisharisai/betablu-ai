@@ -38,7 +38,7 @@ const Navbar = () => {
     
     toast({
       title: "Logged Out",
-      description: "You have been successfully logged out of BetaBLU",
+      description: "You have been successfully logged out of Betablu",
     });
     
     navigate("/");
@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <span className="text-2xl logo-text text-gradient pop-animation">BetaBLU</span>
+              <span className="text-2xl logo-text text-gradient pop-animation">Betablu</span>
             </Link>
           </div>
 
@@ -77,6 +77,12 @@ const Navbar = () => {
               className="text-foreground/90 hover:text-blu-600 font-medium transition-colors hover:scale-hover"
             >
               How It Works
+            </Link>
+            <Link
+              to="/deep-research"
+              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors hover:scale-hover"
+            >
+              Deep Research
             </Link>
             <Link
               to="/advanced-code-space"
@@ -193,6 +199,13 @@ const Navbar = () => {
               onClick={() => setMobileMenuOpen(false)}
             >
               How It Works
+            </Link>
+            <Link
+              to="/deep-research"
+              className="block px-3 py-4 text-foreground hover:text-blu-600 font-medium border-b border-border"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Deep Research
             </Link>
             <Link
               to="/advanced-code-space"

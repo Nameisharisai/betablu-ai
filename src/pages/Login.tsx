@@ -43,7 +43,7 @@ const Login = () => {
       
       toast({
         title: "Login Successful",
-        description: "Welcome back to BetaBLU!",
+        description: "Welcome back to Betablu!",
       });
       
       navigate("/");
@@ -67,10 +67,10 @@ const Login = () => {
         <div className="bg-white rounded-2xl shadow-lg border border-border p-8">
           <div className="text-center mb-8">
             <Link to="/" className="inline-block">
-              <h1 className="text-3xl font-bold text-gradient">BetaBLU</h1>
+              <h1 className="text-3xl font-bold text-gradient">Betablu</h1>
             </Link>
             <h2 className="text-2xl font-semibold mt-6 mb-2">Welcome Back</h2>
-            <p className="text-muted-foreground">Sign in to your account</p>
+            <p className="text-muted-foreground font-serif">Sign in to your account</p>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -87,7 +87,7 @@ const Login = () => {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 rounded-lg border border-border bg-white focus:outline-none focus:ring-2 focus:ring-blu-500"
+                  className="w-full px-4 py-2 rounded-lg border border-border bg-white focus:outline-none focus:ring-2 focus:ring-blu-500 font-serif"
                 />
               </div>
 
@@ -104,7 +104,7 @@ const Login = () => {
                     placeholder="••••••••"
                     value={formData.password}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2 rounded-lg border border-border bg-white focus:outline-none focus:ring-2 focus:ring-blu-500"
+                    className="w-full px-4 py-2 rounded-lg border border-border bg-white focus:outline-none focus:ring-2 focus:ring-blu-500 font-serif"
                   />
                   <button
                     type="button"
@@ -115,7 +115,7 @@ const Login = () => {
                   </button>
                 </div>
                 <div className="flex justify-end mt-2">
-                  <a href="#" className="text-sm text-blu-600 hover:underline">
+                  <a href="#" className="text-sm text-blu-600 hover:underline font-serif">
                     Forgot password?
                   </a>
                 </div>
@@ -128,7 +128,7 @@ const Login = () => {
           </form>
 
           <div className="mt-8 text-center">
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground font-serif">
               Don't have an account?{" "}
               <Link to="/signup" className="text-blu-600 hover:underline">
                 Sign up

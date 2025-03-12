@@ -11,7 +11,7 @@ const HeroSection = () => {
           <h1 className="h1 mb-6">
             <span className="text-gradient">IntelliAgent</span> Space
           </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto font-serif">
             Build and deploy AI agents tailored to your needs. Harness the power of adaptive intelligence to solve complex problems and automate workflows.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

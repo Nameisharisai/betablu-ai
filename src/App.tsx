@@ -17,6 +17,7 @@ import AgentBuilder from "./pages/AgentBuilder";
 import AiChatSpace from "./pages/AiChatSpace";
 import CodeStudio from "./pages/CodeStudio";
 import ResearchSpace from "./pages/ResearchSpace";
+import DeepResearch from "./pages/DeepResearch";
 import ContentAgent from "./pages/ContentAgent";
 import Subscription from "./pages/Subscription";
 import Profile from "./pages/Profile";
@@ -73,6 +74,11 @@ const App = () => (
           <Route path="/research-space" element={
             <ProtectedRoute>
               <ResearchSpace />
+            </ProtectedRoute>
+          } />
+          <Route path="/deep-research" element={
+            <ProtectedRoute>
+              <DeepResearch />
             </ProtectedRoute>
           } />
           <Route path="/content-agent" element={

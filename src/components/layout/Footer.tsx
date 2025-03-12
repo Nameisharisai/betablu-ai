@@ -10,10 +10,10 @@ const Footer = ({ className }: { className?: string }) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center mb-4">
-              <span className="text-2xl font-bold text-gradient">BetaBLU</span>
+              <span className="text-2xl font-bold text-gradient">Betablu</span>
             </div>
-            <p className="text-muted-foreground max-w-sm mb-6">
-              Create, manage, and integrate AI agents into your workflows with BetaBLU's platform.
+            <p className="text-muted-foreground max-w-sm mb-6 font-serif">
+              Create, manage, and integrate AI agents into your workflows with Betablu's platform.
             </p>
             <div className="flex items-center space-x-4 mb-6">
               <a
@@ -48,7 +48,7 @@ const Footer = ({ className }: { className?: string }) => {
           
           <div>
             <h4 className="text-sm font-semibold mb-4 uppercase tracking-wider">Platform</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-3 font-serif">
               <li>
                 <Link to="/intelliagent" className="text-muted-foreground hover:text-blu-500 transition-colors">
                   IntelliAgent Space
@@ -65,8 +65,8 @@ const Footer = ({ className }: { className?: string }) => {
                 </Link>
               </li>
               <li>
-                <Link to="/documentation" className="text-muted-foreground hover:text-blu-500 transition-colors">
-                  Documentation
+                <Link to="/deep-research" className="text-muted-foreground hover:text-blu-500 transition-colors">
+                  Deep Research
                 </Link>
               </li>
             </ul>
@@ -74,7 +74,7 @@ const Footer = ({ className }: { className?: string }) => {
           
           <div>
             <h4 className="text-sm font-semibold mb-4 uppercase tracking-wider">Company</h4>
-            <ul className="space-y-3">
+            <ul className="space-y-3 font-serif">
               <li>
                 <a href="#" className="text-muted-foreground hover:text-blu-500 transition-colors">
                   About
@@ -100,10 +100,10 @@ const Footer = ({ className }: { className?: string }) => {
         </div>
         
         <div className="border-t border-border mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-sm text-muted-foreground mb-4 md:mb-0">
-            &copy; {new Date().getFullYear()} BetaBLU. All rights reserved.
+          <p className="text-sm text-muted-foreground mb-4 md:mb-0 font-serif">
+            &copy; {new Date().getFullYear()} Betablu. All rights reserved.
           </p>
-          <div className="flex space-x-6">
+          <div className="flex space-x-6 font-serif">
             <a href="#" className="text-sm text-muted-foreground hover:text-blu-500 transition-colors">
               Privacy Policy
             </a>

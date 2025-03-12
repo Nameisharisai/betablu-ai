@@ -21,7 +21,7 @@ const AgentTypeCard = ({ icon: Icon, title, description, linkTo }: AgentTypeCard
         <h3 className="text-xl font-bold mb-2">{title}</h3>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground mb-4">
+        <p className="text-muted-foreground mb-4 font-serif">
           {description}
         </p>
         <Link to={linkTo} target="_blank">
