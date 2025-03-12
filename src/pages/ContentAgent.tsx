@@ -16,12 +16,14 @@ import {
   Video, 
   FileText, 
   Share2, 
-  Calendar 
+  Calendar, 
+  Download 
 } from "lucide-react";
+import { toast } from "sonner";
 
 const ContentAgent = () => {
   const navigate = useNavigate();
-  const { toast } = useToast();
+  const { toast: uiToast } = useToast();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [selectedPlatforms, setSelectedPlatforms] = useState<string[]>([]);
   const [contentType, setContentType] = useState("post");
@@ -36,14 +38,14 @@ const ContentAgent = () => {
     setIsLoggedIn(loginStatus);
     
     if (!loginStatus) {
-      toast({
+      uiToast({
         title: "Authentication Required",
         description: "Please log in to access BetaBLU content features",
         variant: "destructive",
       });
       navigate("/login");
     }
-  }, [navigate, toast]);
+  }, [navigate, uiToast]);
 
   const socialPlatforms = [
     { name: "Facebook", icon: <Facebook className="h-5 w-5" />, color: "bg-blue-600" },
@@ -69,7 +71,7 @@ const ContentAgent = () => {
 
   const handleGenerate = () => {
     if (selectedPlatforms.length === 0) {
-      toast({
+      uiToast({
         title: "Platform Required",
         description: "Please select at least one social media platform",
         variant: "destructive",
@@ -78,7 +80,7 @@ const ContentAgent = () => {
     }
 
     if (!prompt.trim()) {
-      toast({
+      uiToast({
         title: "Prompt Required",
         description: "Please enter a prompt for your content",
         variant: "destructive",
@@ -100,7 +102,7 @@ const ContentAgent = () => {
       setGeneratedContent(betabluPrompts[contentType as keyof typeof betabluPrompts]);
       setIsGenerating(false);
       
-      toast({
+      uiToast({
         title: "Content Generated",
         description: `Your ${contentType} content for ${platforms} has been created`,
       });
@@ -109,7 +111,7 @@ const ContentAgent = () => {
 
   const handleSchedule = () => {
     if (!generatedContent) {
-      toast({
+      uiToast({
         title: "No Content",
         description: "Please generate content first before scheduling",
         variant: "destructive",
@@ -122,7 +124,7 @@ const ContentAgent = () => {
     // Simulate scheduling
     setTimeout(() => {
       setIsScheduling(false);
-      toast({
+      uiToast({
         title: "Content Scheduled",
         description: `Your BetaBLU content has been scheduled for posting on ${selectedPlatforms.join(", ")}`,
       });
@@ -131,7 +133,7 @@ const ContentAgent = () => {
 
   const handlePostNow = () => {
     if (!generatedContent) {
-      toast({
+      uiToast({
         title: "No Content",
         description: "Please generate content first before posting",
         variant: "destructive",
@@ -140,10 +142,28 @@ const ContentAgent = () => {
     }
 
     // Simulate posting
-    toast({
+    uiToast({
       title: "Content Posted",
       description: `Your BetaBLU content has been posted to ${selectedPlatforms.join(", ")}`,
     });
+  };
+
+  const handleDownload = () => {
+    if (!generatedContent) {
+      toast.error("No content to download");
+      return;
+    }
+
+    // Create a downloadable file
+    const element = document.createElement("a");
+    const file = new Blob([generatedContent], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = `betablu-content-${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+
+    toast.success("Content downloaded successfully!");
   };
 
   if (!isLoggedIn) {
@@ -156,7 +176,7 @@ const ContentAgent = () => {
       
       <main className="flex-grow pt-24 pb-10">
         <div className="container-section">
-          <div className="mb-12 text-center">
+          <div className="mb-12 text-center fade-in-animation">
             <h1 className="h2 mb-4">BetaBLU Content Creation</h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Create and schedule BetaBLU content for multiple social media platforms with AI assistance. 
@@ -165,7 +185,7 @@ const ContentAgent = () => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="glass-card p-6 rounded-xl">
+            <div className="glass-card p-6 rounded-xl pop-animation">
               <h3 className="text-xl font-semibold mb-4">Create BetaBLU Content</h3>
               
               <div className="space-y-6">
@@ -178,7 +198,7 @@ const ContentAgent = () => {
                       <button
                         key={platform.name}
                         onClick={() => togglePlatform(platform.name)}
-                        className={`flex items-center gap-2 py-2 px-4 rounded-full transition-all ${
+                        className={`flex items-center gap-2 py-2 px-4 rounded-full transition-all scale-hover ${
                           selectedPlatforms.includes(platform.name)
                             ? `${platform.color} text-white`
                             : "bg-secondary hover:bg-secondary/80"
@@ -200,7 +220,7 @@ const ContentAgent = () => {
                       <button
                         key={type.id}
                         onClick={() => setContentType(type.id)}
-                        className={`flex items-center gap-2 py-2 px-4 rounded-full transition-all ${
+                        className={`flex items-center gap-2 py-2 px-4 rounded-full transition-all scale-hover ${
                           contentType === type.id
                             ? "bg-blu-600 text-white"
                             : "bg-secondary hover:bg-secondary/80"
@@ -229,6 +249,7 @@ const ContentAgent = () => {
                   onClick={handleGenerate} 
                   disabled={isGenerating}
                   full
+                  className="pulse-glow"
                 >
                   {isGenerating ? "Generating..." : "Generate BetaBLU Content"}
                 </Button>
@@ -247,7 +268,7 @@ const ContentAgent = () => {
               </div>
             </div>
             
-            <div className="glass-card p-6 rounded-xl">
+            <div className="glass-card p-6 rounded-xl slide-up-animation">
               <h3 className="text-xl font-semibold mb-4">Generated BetaBLU Content</h3>
               
               {isGenerating ? (
@@ -267,6 +288,7 @@ const ContentAgent = () => {
                     <Button 
                       icon={<Share2 className="h-4 w-4" />}
                       onClick={handlePostNow}
+                      className="scale-hover"
                     >
                       Post Now
                     </Button>
@@ -275,8 +297,17 @@ const ContentAgent = () => {
                       icon={<Calendar className="h-4 w-4" />}
                       onClick={handleSchedule}
                       disabled={isScheduling}
+                      className="scale-hover"
                     >
                       {isScheduling ? "Scheduling..." : "Schedule Post"}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      icon={<Download className="h-4 w-4" />}
+                      onClick={handleDownload}
+                      className="scale-hover"
+                    >
+                      Download
                     </Button>
                   </div>
                   

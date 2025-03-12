@@ -54,7 +54,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-gradient">BetaBLU</span>
+              <span className="text-2xl logo-text text-gradient pop-animation">BetaBLU</span>
             </Link>
           </div>
 
@@ -62,37 +62,37 @@ const Navbar = () => {
           <nav className="hidden md:flex items-center space-x-6">
             <Link
               to="/intelliagent"
-              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors"
+              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors hover:scale-hover"
             >
               IntelliAgent Space
             </Link>
             <Link
               to="/content-agent"
-              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors"
+              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors hover:scale-hover"
             >
               Content Creation
             </Link>
             <Link
               to="/how-it-works"
-              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors"
+              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors hover:scale-hover"
             >
               How It Works
             </Link>
             <Link
-              to="/adaptive-intelligence"
-              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors"
+              to="/advanced-code-space"
+              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors hover:scale-hover"
             >
-              Adaptive Intelligence
+              Advanced Code Space
             </Link>
             <Link
               to="/subscription"
-              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors"
+              className="text-foreground/90 hover:text-blu-600 font-medium transition-colors hover:scale-hover"
             >
               Pricing
             </Link>
             
             {!isLoggedIn ? (
-              <div className="flex space-x-2">
+              <div className="flex space-x-2 fade-in-animation">
                 <Link to="/login">
                   <Button variant="outline" size="sm">Login</Button>
                 </Link>
@@ -101,7 +101,7 @@ const Navbar = () => {
                 </Link>
               </div>
             ) : (
-              <div className="relative">
+              <div className="relative pop-animation">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                   className="flex items-center space-x-1 p-1 rounded-full hover:bg-secondary transition-colors"
@@ -112,7 +112,7 @@ const Navbar = () => {
                 </button>
                 
                 {userMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 glass rounded-lg shadow-lg py-1 z-50">
+                  <div className="absolute right-0 mt-2 w-48 glass rounded-lg shadow-lg py-1 z-50 slide-up-animation">
                     <Link
                       to="/profile"
                       className="block px-4 py-2 hover:bg-secondary transition-colors"
@@ -195,11 +195,11 @@ const Navbar = () => {
               How It Works
             </Link>
             <Link
-              to="/adaptive-intelligence"
+              to="/advanced-code-space"
               className="block px-3 py-4 text-foreground hover:text-blu-600 font-medium border-b border-border"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Adaptive Intelligence
+              Advanced Code Space
             </Link>
             <Link
               to="/subscription"
