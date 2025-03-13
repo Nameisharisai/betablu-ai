@@ -4,10 +4,10 @@ import FeatureCard from "./FeatureCard";
 
 const FeaturesGrid = () => {
   return (
-    <section className="py-20 bg-cosmos-100/30">
+    <section className="py-20 bg-pro-50">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 reveal">
-          <h2 className="h2 mb-4">Discover Our AI Workspaces</h2>
+          <h2 className="h2 mb-4 text-gradient-pro">Discover Our AI Workspaces</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Explore our specialized AI environments designed for different use cases
           </p>

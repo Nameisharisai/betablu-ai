@@ -4,11 +4,11 @@ import AgentTypeCard from "./AgentTypeCard";
 
 const AgentTypes = () => {
   return (
-    <section className="py-20 bg-cosmos-900" id="agent-types">
+    <section className="py-20 bg-pro-900" id="agent-types">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 reveal">
           <h2 className="h2 mb-4 text-white">Specialized Agent Types</h2>
-          <p className="text-cosmos-200 max-w-2xl mx-auto">
+          <p className="text-pro-200 max-w-2xl mx-auto">
             Explore pre-configured agent templates designed for specific use cases
           </p>
         </div>

@@ -17,12 +17,12 @@ const Card = ({
   onClick,
   animate = false,
 }: CardProps) => {
-  const baseStyles = "rounded-2xl overflow-hidden transition-all duration-500";
+  const baseStyles = "rounded-xl overflow-hidden transition-all duration-500";
   
   const variantStyles = {
-    default: "bg-white shadow-sm hover:shadow",
+    default: "bg-white shadow-pro-sm hover:shadow-pro",
     glass: "glass-card",
-    bordered: "border border-border bg-background",
+    bordered: "border border-pro-200 bg-background",
   };
   
   const animationStyles = animate ? "hover:-translate-y-1" : "";

@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Times+New+Roman:wght@400;700&display=swap');
 
 @tailwind base;
@@ -6,26 +7,26 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 14% 10%;
+    --background: 220 20% 97%;
+    --foreground: 220 20% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 14% 10%;
+    --card-foreground: 220 20% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 14% 10%;
+    --popover-foreground: 220 20% 10%;
 
-    --primary: 220 14% 10%;
+    --primary: 220 47% 15%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 14% 96%;
-    --secondary-foreground: 220 14% 10%;
+    --secondary-foreground: 220 20% 10%;
 
     --muted: 220 14% 96%;
     --muted-foreground: 220 14% 40%;
 
-    --accent: 220 14% 96%;
-    --accent-foreground: 220 14% 10%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
@@ -48,7 +49,15 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: hidden;
-    font-family: 'Times New Roman', serif;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+  }
+  
+  p {
+    @apply font-sans;
   }
   
   .logo-text {
@@ -59,11 +68,11 @@
 
 @layer components {
   .glass {
-    @apply backdrop-blur-lg bg-white/80 border border-black/5 shadow-md transition-all duration-300;
+    @apply backdrop-blur-lg bg-white/80 border border-black/5 shadow-pro-sm transition-all duration-300;
   }
   
   .glass-card {
-    @apply backdrop-blur-lg bg-white/90 border border-black/5 shadow-md hover:shadow-lg transition-all duration-500;
+    @apply backdrop-blur-lg bg-white/90 border border-black/5 shadow-pro-sm hover:shadow-pro transition-all duration-500;
   }
   
   .text-balance {
@@ -112,28 +121,62 @@
   .pop-animation {
     animation: pop 0.3s ease-in-out;
   }
+
+  /* Professional button styles */
+  .btn-primary {
+    @apply bg-accent1-700 hover:bg-accent1-800 text-white px-4 py-2 rounded-lg transition-all duration-200 font-medium;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary/80 text-foreground px-4 py-2 rounded-lg transition-all duration-200 font-medium;
+  }
+  
+  .btn-outline {
+    @apply border border-pro-300 hover:bg-pro-100 text-pro-800 px-4 py-2 rounded-lg transition-all duration-200 font-medium;
+  }
+  
+  /* Card styles */
+  .pro-card {
+    @apply bg-white border border-pro-200 rounded-xl shadow-pro-sm hover:shadow-pro transition-all duration-300;
+  }
+  
+  /* Section styles */
+  .pro-section {
+    @apply py-16 md:py-24;
+  }
+  
+  .pro-section-alt {
+    @apply py-16 md:py-24 bg-pro-50;
+  }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-cosmos-700 to-cosmos-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-pro-700 to-pro-500 bg-clip-text text-transparent;
   }
   
   .text-gradient-light {
-    @apply bg-gradient-to-r from-white to-cosmos-100 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-white to-pro-100 bg-clip-text text-transparent;
   }
   
   .animated-gradient {
-    background: linear-gradient(-45deg, #000000, #333333, #555555, #222222);
+    background: linear-gradient(-45deg, #1F2937, #374151, #4B5563, #1F2937);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
   }
   
   .animated-gradient-light {
-    background: linear-gradient(-45deg, #ffffff, #cccccc, #dddddd, #eeeeee);
+    background: linear-gradient(-45deg, #ffffff, #F3F4F6, #F9FAFB, #ffffff);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
-    color: #333333;
+    color: #1F2937;
+  }
+  
+  .animated-gradient-accent {
+    background: linear-gradient(-45deg, #1D4ED8, #3B82F6, #60A5FA, #3B82F6);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    @apply text-white;
   }
   
   .floating {
@@ -152,7 +195,7 @@
     }
   }
   
-  .floatingDot {
+  @keyframes floatingDot {
     0% {
       transform: translateY(0);
       opacity: 0.4;
@@ -169,13 +212,13 @@
   
   @keyframes pulse-glow {
     0% {
-      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
     }
     70% {
-      box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+      box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
     }
     100% {
-      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+      box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
     }
   }
   
@@ -213,6 +256,18 @@
     }
   }
   
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
   .rotate-hover:hover {
     transform: rotate(5deg);
     transition: transform 0.3s ease;
@@ -221,5 +276,18 @@
   .scale-hover:hover {
     transform: scale(1.05);
     transition: transform 0.3s ease;
+  }
+  
+  /* Professional utilities */
+  .text-gradient-pro {
+    @apply bg-gradient-to-r from-accent1-700 to-accent1-500 bg-clip-text text-transparent;
+  }
+  
+  .shadow-hover {
+    @apply transition-shadow duration-300 hover:shadow-pro;
+  }
+  
+  .border-hover {
+    @apply transition-all duration-300 hover:border-accent1-500;
   }
 }

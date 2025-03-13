@@ -37,7 +37,7 @@ const Hero = () => {
       if (!particles) return;
       
       const particle = document.createElement('div');
-      particle.className = 'absolute w-1 h-1 bg-blu-400/30 rounded-full';
+      particle.className = 'absolute w-1 h-1 bg-accent1-400/30 rounded-full';
       
       // Random position
       const x = Math.random() * 100;
@@ -84,14 +84,14 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-gradient-to-b from-pro-900 to-pro-800">
       {/* Particles Container */}
       <div className="particles absolute inset-0 overflow-hidden z-0"></div>
       
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] rounded-full bg-blu-900/20 blur-3xl" />
-        <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] rounded-full bg-blu-800/10 blur-3xl" />
+        <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[800px] h-[800px] rounded-full bg-accent1-600/5 blur-3xl" />
+        <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] rounded-full bg-accent1-500/10 blur-3xl" />
       </div>
       
       {/* Content */}
@@ -99,26 +99,26 @@ const Hero = () => {
         ref={heroRef}
         className="container-section flex flex-col items-center text-center space-y-12 opacity-0 translate-y-10 transition-all duration-1000"
       >
-        <div className="inline-flex items-center px-3 py-1.5 border border-blu-800 rounded-full bg-blu-900/50 pulse-glow">
-          <span className="text-xs font-medium text-blu-400 uppercase tracking-wide">
-            Introducing BetaBLU Platform
+        <div className="inline-flex items-center px-3 py-1.5 border border-accent1-300/30 rounded-full bg-accent1-900/10 pulse-glow">
+          <span className="text-xs font-medium text-accent1-200 uppercase tracking-wide">
+            Introducing Betablu Platform
           </span>
         </div>
 
         <h1 
           ref={titleRef}
-          className="h1 max-w-4xl text-balance opacity-0 translate-y-10 transition-all duration-1000"
+          className="h1 max-w-4xl text-balance opacity-0 translate-y-10 transition-all duration-1000 text-white"
         >
           Create, deploy, and integrate
-          <span className="text-gradient"> AI agents </span>
+          <span className="text-gradient-light"> AI agents </span>
           into your workflows
         </h1>
 
         <p 
           ref={textRef}
-          className="text-xl text-muted-foreground max-w-2xl text-balance opacity-0 translate-y-10 transition-all duration-1000"
+          className="text-xl text-pro-200 max-w-2xl text-balance opacity-0 translate-y-10 transition-all duration-1000"
         >
-          BetaBLU helps enterprises and developers create powerful AI agents that seamlessly integrate with existing systems and workflows.
+          Betablu helps enterprises and developers create powerful AI agents that seamlessly integrate with existing systems and workflows.
         </p>
 
         <div 
@@ -126,24 +126,24 @@ const Hero = () => {
           className="flex flex-col sm:flex-row gap-4 mt-8 opacity-0 translate-y-10 transition-all duration-1000"
         >
           <Link to="/agent-builder">
-            <Button size="lg" icon={<ArrowRight size={18} />} iconPosition="right" className="animated-gradient">
+            <Button size="lg" icon={<ArrowRight size={18} />} iconPosition="right" className="animated-gradient-accent">
               Get Started
             </Button>
           </Link>
           <Link to="/documentation">
-            <Button size="lg" variant="outline">
+            <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/5">
               View Documentation
             </Button>
           </Link>
         </div>
         
-        {/* Floating animated elements replacing mouse scroll */}
+        {/* Floating animated elements */}
         <div className="absolute bottom-10 left-0 right-0 flex justify-center">
           <div className="flex space-x-2">
             {[1, 2, 3].map((i) => (
               <div 
                 key={i}
-                className="w-2 h-2 rounded-full bg-white/60"
+                className="w-2 h-2 rounded-full bg-accent1-200/60"
                 style={{
                   animation: `floatingDot 1.5s ease-in-out ${i * 0.2}s infinite alternate`
                 }}
