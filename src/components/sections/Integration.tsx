@@ -2,6 +2,7 @@
 import { useEffect, useRef } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Button from "../common/Button";
+import { Link } from "react-router-dom";
 
 const INTEGRATION_STEPS = [
   {
@@ -89,13 +90,15 @@ const Integration = () => {
               ))}
             </div>
             
-            <Button 
-              className="mt-8" 
-              icon={<ArrowRight size={16} />} 
-              iconPosition="right"
-            >
-              Explore Integration Options
-            </Button>
+            <Link to="/documentation">
+              <Button 
+                className="mt-8" 
+                icon={<ArrowRight size={16} />} 
+                iconPosition="right"
+              >
+                Explore Integration Options
+              </Button>
+            </Link>
           </div>
           
           <div className="relative h-[500px] hidden lg:block reveal">

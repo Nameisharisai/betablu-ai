@@ -15,7 +15,7 @@ const HeroSection = () => {
             Build and deploy AI agents tailored to your needs. Harness the power of adaptive intelligence to solve complex problems and automate workflows.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/agent-builder" target="_blank">
+            <Link to="/agent-builder">
               <Button size="lg" className="animated-gradient">
                 Start Building
               </Button>

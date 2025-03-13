@@ -2,6 +2,7 @@
 import { ArrowRight } from "lucide-react";
 import Button from "../common/Button";
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -124,18 +125,30 @@ const Hero = () => {
           ref={buttonsRef}
           className="flex flex-col sm:flex-row gap-4 mt-8 opacity-0 translate-y-10 transition-all duration-1000"
         >
-          <Button size="lg" icon={<ArrowRight size={18} />} iconPosition="right" className="animated-gradient">
-            Get Started
-          </Button>
-          <Button size="lg" variant="outline">
-            View Documentation
-          </Button>
+          <Link to="/agent-builder">
+            <Button size="lg" icon={<ArrowRight size={18} />} iconPosition="right" className="animated-gradient">
+              Get Started
+            </Button>
+          </Link>
+          <Link to="/documentation">
+            <Button size="lg" variant="outline">
+              View Documentation
+            </Button>
+          </Link>
         </div>
         
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 floating hidden md:block">
-          <div className="w-8 h-12 rounded-full border-2 border-foreground/20 flex items-start justify-center p-1">
-            <div className="w-1.5 h-3 bg-foreground/40 rounded-full animate-slide-down" />
+        {/* Floating animated elements replacing mouse scroll */}
+        <div className="absolute bottom-10 left-0 right-0 flex justify-center">
+          <div className="flex space-x-2">
+            {[1, 2, 3].map((i) => (
+              <div 
+                key={i}
+                className="w-2 h-2 rounded-full bg-white/60"
+                style={{
+                  animation: `floatingDot 1.5s ease-in-out ${i * 0.2}s infinite alternate`
+                }}
+              />
+            ))}
           </div>
         </div>
       </div>
