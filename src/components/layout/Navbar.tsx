@@ -41,8 +41,8 @@ const Navbar = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "py-3 glass shadow-sm" : "py-5 bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 ${
+        isScrolled ? "py-3 glass shadow-sm" : "py-5 bg-background/80 backdrop-blur-sm"
       }`}
     >
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +53,7 @@ const Navbar = () => {
 
           <nav className="hidden md:flex items-center space-x-6">
             <NavLinks />
-            <UserMenu isLoggedIn={isLoggedIn} />
+            <UserMenu isLoggedIn={isLoggedIn} onLogout={handleLogout} />
           </nav>
 
           <MobileMenu 

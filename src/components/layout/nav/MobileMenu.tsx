@@ -28,8 +28,8 @@ const MobileMenu = ({ isOpen, setIsOpen, isLoggedIn, onLogout }: MobileMenuProps
       </div>
 
       {isOpen && (
-        <div className="md:hidden glass animate-fade-in">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="fixed inset-0 top-[4rem] md:hidden bg-background/95 backdrop-blur-sm z-50 animate-fade-in">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 max-h-[calc(100vh-4rem)] overflow-y-auto">
             <Link
               to="/intelliagent"
               className="block px-3 py-4 text-foreground hover:text-blu-600 font-medium border-b border-border"

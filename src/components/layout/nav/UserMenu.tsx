@@ -7,22 +7,17 @@ import { useToast } from "@/hooks/use-toast";
 
 interface UserMenuProps {
   isLoggedIn: boolean;
+  onLogout: () => void;
 }
 
-const UserMenu = ({ isLoggedIn }: UserMenuProps) => {
+const UserMenu = ({ isLoggedIn, onLogout }: UserMenuProps) => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
+    onLogout();
     setUserMenuOpen(false);
-    
-    toast({
-      title: "Logged Out",
-      description: "You have been successfully logged out of Betablu",
-    });
-    
     navigate("/");
   };
 
