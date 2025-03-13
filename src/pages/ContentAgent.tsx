@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/layout/Navbar";
@@ -32,7 +31,6 @@ const ContentAgent = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isScheduling, setIsScheduling] = useState(false);
 
-  // Check authentication on component mount
   useEffect(() => {
     const loginStatus = localStorage.getItem("isLoggedIn") === "true";
     setIsLoggedIn(loginStatus);
@@ -40,7 +38,7 @@ const ContentAgent = () => {
     if (!loginStatus) {
       uiToast({
         title: "Authentication Required",
-        description: "Please log in to access BetaBLU content features",
+        description: "Please log in to access Betablu content features",
         variant: "destructive",
       });
       navigate("/login");
@@ -90,13 +88,12 @@ const ContentAgent = () => {
 
     setIsGenerating(true);
 
-    // Simulate content generation for BetaBLU
     setTimeout(() => {
       const platforms = selectedPlatforms.join(", ");
       const betabluPrompts = {
-        post: `Amazing news from BetaBLU! Our adaptive AI technology just got smarter. ${prompt}. Try it today and transform your workflow! #BetaBLU #AIInnovation`,
-        image: `[Image Description]: A sleek visualization of BetaBLU's interface showing ${prompt}. The image highlights our cutting-edge AI capabilities with a modern, professional aesthetic.`,
-        video: `[Video Script]\nIntro: Quick animation of BetaBLU logo\nHost: "Welcome to BetaBLU where we're redefining AI assistance. Today we're exploring ${prompt}."\nMiddle: Demonstration of the feature in action\nClosing: "Join the AI revolution with BetaBLU today!"\nOutro: Call-to-action with subscription information`
+        post: `Amazing news from Betablu! Our adaptive AI technology just got smarter. ${prompt}. Try it today and transform your workflow! #Betablu #AIInnovation`,
+        image: `[Image Description]: A sleek visualization of Betablu's interface showing ${prompt}. The image highlights our cutting-edge AI capabilities with a modern, professional aesthetic.`,
+        video: `[Video Script]\nIntro: Quick animation of Betablu logo\nHost: "Welcome to Betablu where we're redefining AI assistance. Today we're exploring ${prompt}."\nMiddle: Demonstration of the feature in action\nClosing: "Join the AI revolution with Betablu today!"\nOutro: Call-to-action with subscription information`
       };
       
       setGeneratedContent(betabluPrompts[contentType as keyof typeof betabluPrompts]);
@@ -121,12 +118,11 @@ const ContentAgent = () => {
 
     setIsScheduling(true);
 
-    // Simulate scheduling
     setTimeout(() => {
       setIsScheduling(false);
       uiToast({
         title: "Content Scheduled",
-        description: `Your BetaBLU content has been scheduled for posting on ${selectedPlatforms.join(", ")}`,
+        description: `Your Betablu content has been scheduled for posting on ${selectedPlatforms.join(", ")}`,
       });
     }, 1500);
   };
@@ -141,10 +137,9 @@ const ContentAgent = () => {
       return;
     }
 
-    // Simulate posting
     uiToast({
       title: "Content Posted",
-      description: `Your BetaBLU content has been posted to ${selectedPlatforms.join(", ")}`,
+      description: `Your Betablu content has been posted to ${selectedPlatforms.join(", ")}`,
     });
   };
 
@@ -154,7 +149,6 @@ const ContentAgent = () => {
       return;
     }
 
-    // Create a downloadable file
     const element = document.createElement("a");
     const file = new Blob([generatedContent], {type: 'text/plain'});
     element.href = URL.createObjectURL(file);
@@ -167,7 +161,7 @@ const ContentAgent = () => {
   };
 
   if (!isLoggedIn) {
-    return null; // Will redirect via useEffect
+    return null;
   }
 
   return (
@@ -177,16 +171,16 @@ const ContentAgent = () => {
       <main className="flex-grow pt-24 pb-10">
         <div className="container-section">
           <div className="mb-12 text-center fade-in-animation">
-            <h1 className="h2 mb-4">BetaBLU Content Creation</h1>
+            <h1 className="h2 mb-4">Betablu Content Creation</h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Create and schedule BetaBLU content for multiple social media platforms with AI assistance. 
+              Create and schedule Betablu content for multiple social media platforms with AI assistance. 
               Connect your accounts and streamline your social media workflow.
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
             <div className="glass-card p-6 rounded-xl pop-animation">
-              <h3 className="text-xl font-semibold mb-4">Create BetaBLU Content</h3>
+              <h3 className="text-xl font-semibold mb-4">Create Betablu Content</h3>
               
               <div className="space-y-6">
                 <div>
@@ -235,12 +229,12 @@ const ContentAgent = () => {
                 
                 <div>
                   <label className="block text-sm font-medium mb-2">
-                    3. Describe BetaBLU Content
+                    3. Describe Betablu Content
                   </label>
                   <textarea
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
-                    placeholder="Describe the BetaBLU features or news you want to highlight..."
+                    placeholder="Describe the Betablu features or news you want to highlight..."
                     className="w-full p-3 rounded-lg bg-white border border-border focus:ring-blu-500 focus:border-blu-500 min-h-[120px]"
                   />
                 </div>
@@ -251,7 +245,7 @@ const ContentAgent = () => {
                   full
                   className="pulse-glow"
                 >
-                  {isGenerating ? "Generating..." : "Generate BetaBLU Content"}
+                  {isGenerating ? "Generating..." : "Generate Betablu Content"}
                 </Button>
                 
                 <div className="pt-4 border-t border-border">
@@ -262,21 +256,21 @@ const ContentAgent = () => {
                     </Button>
                   </div>
                   <p className="text-sm text-muted-foreground">
-                    Connect additional social media accounts to expand BetaBLU's reach
+                    Connect additional social media accounts to expand Betablu's reach
                   </p>
                 </div>
               </div>
             </div>
             
             <div className="glass-card p-6 rounded-xl slide-up-animation">
-              <h3 className="text-xl font-semibold mb-4">Generated BetaBLU Content</h3>
+              <h3 className="text-xl font-semibold mb-4">Generated Betablu Content</h3>
               
               {isGenerating ? (
                 <div className="flex flex-col items-center justify-center min-h-[300px]">
                   <div className="mb-4">
                     <div className="h-12 w-12 border-t-2 border-blu-500 rounded-full animate-spin"></div>
                   </div>
-                  <p className="text-muted-foreground">Generating your BetaBLU content...</p>
+                  <p className="text-muted-foreground">Generating your Betablu content...</p>
                 </div>
               ) : generatedContent ? (
                 <div className="space-y-6">
@@ -315,14 +309,14 @@ const ContentAgent = () => {
                     <h4 className="font-medium mb-2">Platform Preview</h4>
                     <div className="bg-white p-3 rounded-lg border border-border">
                       <p className="text-sm text-muted-foreground">
-                        BetaBLU content preview: see how your post will appear on selected platforms.
+                        Betablu content preview: see how your post will appear on selected platforms.
                       </p>
                     </div>
                   </div>
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-center min-h-[300px] text-muted-foreground">
-                  <p>Your generated BetaBLU content will appear here</p>
+                  <p>Your generated Betablu content will appear here</p>
                   <p className="text-sm mt-2">Select platforms and enter a prompt to get started</p>
                 </div>
               )}
