@@ -23,22 +23,22 @@ const UserMenu = ({ isLoggedIn, onLogout }: UserMenuProps) => {
 
   if (!isLoggedIn) {
     return (
-      <div className="flex space-x-2 fade-in-animation">
+      <div className="flex space-x-2 fade-in-animation overflow-visible">
         <Link to="/login">
-          <Button variant="outline" size="sm">Login</Button>
+          <Button variant="outline" size="sm" className="z-10">Login</Button>
         </Link>
         <Link to="/signup">
-          <Button size="sm">Sign Up</Button>
+          <Button size="sm" className="z-10">Sign Up</Button>
         </Link>
       </div>
     );
   }
 
   return (
-    <div className="relative">
+    <div className="relative overflow-visible">
       <button
         onClick={() => setUserMenuOpen(!userMenuOpen)}
-        className="flex items-center space-x-1 p-2 rounded-full hover:bg-pro-100 transition-colors"
+        className="flex items-center space-x-1 p-2 rounded-full hover:bg-pro-100 transition-colors z-10"
       >
         <div className="w-8 h-8 bg-accent1-600 rounded-full flex items-center justify-center text-white">
           <User className="h-4 w-4" />

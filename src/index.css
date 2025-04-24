@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Times+New+Roman:wght@400;700&display=swap');
 
 @tailwind base;
@@ -290,4 +289,27 @@
   .border-hover {
     @apply transition-all duration-300 hover:border-accent1-500;
   }
+}
+
+/* Button Visibility Fixes */
+button, 
+a[role="button"],
+.btn,
+.button {
+  position: relative;
+  z-index: 5; /* Ensure buttons are above other elements */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Improve mobile menu button visibility */
+.mobile-menu-button {
+  position: relative;
+  z-index: 110; /* Higher than the navbar z-index */
+}
+
+/* Fix for potential button overflow issues */
+.overflow-visible {
+  overflow: visible !important;
 }

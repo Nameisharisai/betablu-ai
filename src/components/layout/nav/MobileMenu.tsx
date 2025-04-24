@@ -16,7 +16,7 @@ const MobileMenu = ({ isOpen, setIsOpen, isLoggedIn, onLogout }: MobileMenuProps
       <div className="md:hidden flex items-center">
         <button
           type="button"
-          className="text-foreground p-2 rounded-md"
+          className="text-foreground p-2 rounded-md mobile-menu-button overflow-visible"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? (
